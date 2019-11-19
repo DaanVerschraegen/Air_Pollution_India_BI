@@ -1,0 +1,7 @@
+D:\School\AP\2019-2020\Semester 1\Intro BI\Air_Pollution_India\Air_Pollution_India_BI\Staging_Area\bin\Debug\Staging_Area.exe.config
+D:\School\AP\2019-2020\Semester 1\Intro BI\Air_Pollution_India\Air_Pollution_India_BI\Staging_Area\bin\Debug\Staging_Area.exe
+D:\School\AP\2019-2020\Semester 1\Intro BI\Air_Pollution_India\Air_Pollution_India_BI\Staging_Area\bin\Debug\Staging_Area.pdb
+D:\School\AP\2019-2020\Semester 1\Intro BI\Air_Pollution_India\Air_Pollution_India_BI\Staging_Area\obj\Debug\Staging_Area.csproj.CoreCompileInputs.cache
+D:\School\AP\2019-2020\Semester 1\Intro BI\Air_Pollution_India\Air_Pollution_India_BI\Staging_Area\obj\Debug\Staging_Area.exe
+D:\School\AP\2019-2020\Semester 1\Intro BI\Air_Pollution_India\Air_Pollution_India_BI\Staging_Area\obj\Debug\Staging_Area.pdb
+D:\School\AP\2019-2020\Semester 1\Intro BI\Air_Pollution_India\Air_Pollution_India_BI\Staging_Area\obj\Debug\Staging_Area.csprojAssemblyReference.cache

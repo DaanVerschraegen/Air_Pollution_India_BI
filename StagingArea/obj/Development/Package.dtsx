@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{1869206F-26A1-4B48-A2B8-63AA07319119}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{86DCD1AE-ECAB-4657-8C02-643CC84172AB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -36,10 +36,11 @@
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="2"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="stn_code"
-              DTS:DTSID="{864908CD-5384-4071-8B8F-96D6884BFDE9}"
+              DTS:DTSID="{7DC3EEEB-60BA-4DD4-8E8B-20B521FCE218}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -48,7 +49,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="sampling_date"
-              DTS:DTSID="{9FD80518-4DB1-48BD-A6EA-D9F0B6A2B6E2}"
+              DTS:DTSID="{65FA441E-1BC6-4BBC-BABC-90A22BE81FE8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -57,7 +58,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{28DDE49C-60AD-410F-9135-C55A54EF78BB}"
+              DTS:DTSID="{8FD1C143-7077-44CD-8206-4819AB06DFBC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -66,7 +67,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="location"
-              DTS:DTSID="{1B0104EE-BE20-498E-893D-E2209FD37DBD}"
+              DTS:DTSID="{567DA2B4-8E46-45D1-95EA-0B2D3D0923D8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -75,7 +76,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="agency"
-              DTS:DTSID="{D2070D92-4F35-46DF-8AFC-A228CAA473C8}"
+              DTS:DTSID="{0D462C25-267A-43F2-8E64-1D9CB7F5D520}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -84,64 +85,70 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="type"
-              DTS:DTSID="{F348CD44-F1D5-4AE1-8418-BD56BCF85F1E}"
+              DTS:DTSID="{542D1721-8F5E-4072-B46F-E6BD8351E6DC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="14"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="so2"
-              DTS:DTSID="{3D6B7452-BE79-48AB-96A2-CA077C674294}"
+              DTS:DTSID="{52261180-8FF4-47B9-915B-60393D0B5837}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="14"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="no2"
-              DTS:DTSID="{D056555F-E6D5-4205-ACB0-A1EEA66301C7}"
+              DTS:DTSID="{A4AA8AB6-F31F-484D-9B3D-39C6905B99EB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="14"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="rspm"
-              DTS:DTSID="{EF098E39-92B4-4EE2-B1AB-9B8636B8AB11}"
+              DTS:DTSID="{A54F8BC4-260F-4011-8B3B-86151D5FCDC5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="14"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="spm"
-              DTS:DTSID="{247368AD-D729-4EFB-A2C8-A468589E9AFE}"
+              DTS:DTSID="{EA85C7CE-BAA6-428A-BF2E-6B18400CC0A4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="87"
+              DTS:MaximumWidth="100"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="location_monitoring_station"
-              DTS:DTSID="{7D558B4B-569E-4978-8E08-D3797B7CEA18}"
+              DTS:DTSID="{22CC3C35-DE58-45A7-A8D1-61D2D075E951}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="14"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="pm2_5"
-              DTS:DTSID="{24B2C9F4-4A07-4EE2-B4BB-5B96138B9A3B}"
+              DTS:DTSID="{18D0B4D2-3017-4AFF-98D9-ED02959E1EF5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000A_"
-              DTS:DataType="7"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="date"
-              DTS:DTSID="{0911B5A8-5CCD-4A23-B914-E6DC5B21068D}"
+              DTS:DTSID="{7E73AF04-95A4-416F-B103-C45752A291EE}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -207,10 +214,12 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[stn_code]"
-                      dataType="i2"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[stn_code]"
+                      length="50"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[stn_code]"
                       name="stn_code"
                       truncationRowDisposition="FailComponent">
@@ -337,10 +346,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[so2]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[so2]"
+                      length="50"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[so2]"
                       name="so2"
                       truncationRowDisposition="FailComponent">
@@ -357,10 +368,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[no2]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[no2]"
+                      length="50"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[no2]"
                       name="no2"
                       truncationRowDisposition="FailComponent">
@@ -377,10 +390,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[rspm]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[rspm]"
+                      length="50"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[rspm]"
                       name="rspm"
                       truncationRowDisposition="FailComponent">
@@ -397,10 +412,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[spm]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[spm]"
+                      length="50"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[spm]"
                       name="spm"
                       truncationRowDisposition="FailComponent">
@@ -422,7 +439,7 @@
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[location_monitoring_station]"
-                      length="87"
+                      length="100"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[location_monitoring_station]"
                       name="location_monitoring_station"
                       truncationRowDisposition="FailComponent">
@@ -439,10 +456,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[pm2_5]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pm2_5]"
+                      length="50"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[pm2_5]"
                       name="pm2_5"
                       truncationRowDisposition="FailComponent">
@@ -459,10 +478,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[date]"
-                      dataType="date"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      length="50"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[date]"
                       name="date"
                       truncationRowDisposition="FailComponent">
@@ -482,7 +503,9 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[stn_code]"
-                      dataType="i2"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="stn_code" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[sampling_date]"
@@ -516,33 +539,45 @@
                       name="type" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[so2]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="so2" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[no2]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="no2" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[rspm]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="rspm" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[spm]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="spm" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[location_monitoring_station]"
                       codePage="1252"
                       dataType="str"
-                      length="87"
+                      length="100"
                       name="location_monitoring_station" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pm2_5]"
-                      dataType="decimal"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="pm2_5" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[date]"
-                      dataType="date"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="date" />
                   </externalMetadataColumns>
                 </output>
@@ -649,7 +684,9 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stn_code]"
-                      cachedDataType="i2"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="stn_code"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Stn_code]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[stn_code]" />
@@ -695,25 +732,33 @@
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[type]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[so2]"
-                      cachedDataType="decimal"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="so2"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[so2]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[no2]"
-                      cachedDataType="decimal"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="no2"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[no2]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rspm]"
-                      cachedDataType="decimal"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="rspm"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[rspm]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[spm]"
-                      cachedDataType="decimal"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="spm"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[spm]" />
@@ -721,19 +766,23 @@
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[location_monitoring_station]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="87"
+                      cachedLength="100"
                       cachedName="location_monitoring_station"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location_monitoring_station]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[location_monitoring_station]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pm2_5]"
-                      cachedDataType="decimal"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="pm2_5"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PM2_5]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[pm2_5]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
-                      cachedDataType="date"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="date"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[date]" />

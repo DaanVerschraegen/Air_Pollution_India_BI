@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{86DCD1AE-ECAB-4657-8C02-643CC84172AB}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{B4616C17-1E7C-47F4-8634-4DD990783D6A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -31,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="D:\School\AP\2019-2020\Semester 1\Intro BI\Data files\data.csv">
+          DTS:ConnectionString="C:\Users\Dries\Documents\Intro BI\data.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -40,7 +40,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="stn_code"
-              DTS:DTSID="{7DC3EEEB-60BA-4DD4-8E8B-20B521FCE218}"
+              DTS:DTSID="{8C4E281E-D5CA-4447-BE13-2F5D9717DADF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="sampling_date"
-              DTS:DTSID="{65FA441E-1BC6-4BBC-BABC-90A22BE81FE8}"
+              DTS:DTSID="{EE133EA9-0C7F-41AD-A0FE-0548F53FB8D3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{8FD1C143-7077-44CD-8206-4819AB06DFBC}"
+              DTS:DTSID="{CCDC28CE-C4A8-4541-A20F-5E2D53459E2A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -67,7 +67,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="location"
-              DTS:DTSID="{567DA2B4-8E46-45D1-95EA-0B2D3D0923D8}"
+              DTS:DTSID="{EC1A9F41-8D50-4625-B0B0-294049DB347F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="agency"
-              DTS:DTSID="{0D462C25-267A-43F2-8E64-1D9CB7F5D520}"
+              DTS:DTSID="{FAB773C3-07FD-41EE-B4A0-85941303A84C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="type"
-              DTS:DTSID="{542D1721-8F5E-4072-B46F-E6BD8351E6DC}"
+              DTS:DTSID="{EB932F37-C956-437A-9E36-F76978A44EB9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -94,7 +94,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="so2"
-              DTS:DTSID="{52261180-8FF4-47B9-915B-60393D0B5837}"
+              DTS:DTSID="{4453CC0E-10F0-4250-8A2A-5EB766435903}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -103,7 +103,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="no2"
-              DTS:DTSID="{A4AA8AB6-F31F-484D-9B3D-39C6905B99EB}"
+              DTS:DTSID="{03F7F56D-C2CC-4F07-8A0D-3D8EE4486251}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -112,7 +112,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="rspm"
-              DTS:DTSID="{A54F8BC4-260F-4011-8B3B-86151D5FCDC5}"
+              DTS:DTSID="{56577F64-DDBE-4142-86B4-BAD6CAE728F3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -121,7 +121,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="spm"
-              DTS:DTSID="{EA85C7CE-BAA6-428A-BF2E-6B18400CC0A4}"
+              DTS:DTSID="{0A7BA519-B95D-4E88-995D-3D257D1CB449}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -130,7 +130,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="location_monitoring_station"
-              DTS:DTSID="{22CC3C35-DE58-45A7-A8D1-61D2D075E951}"
+              DTS:DTSID="{18D6B9AF-24F4-427D-9A45-5D341DB4A821}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -139,7 +139,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="pm2_5"
-              DTS:DTSID="{18D0B4D2-3017-4AFF-98D9-ED02959E1EF5}"
+              DTS:DTSID="{CA9D2BB3-96F6-4A41-9DF8-9BDED12AF902}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -148,10 +148,20 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="date"
-              DTS:DTSID="{7E73AF04-95A4-416F-B103-C45752A291EE}"
+              DTS:DTSID="{A9C18526-E257-4452-8F84-97312C16D0B6}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-4PKARU4.AIR_POLLUTION]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{178190F9-FB6B-4D99-80CB-1CEAFB3977B2}"
+      DTS:ObjectName="DESKTOP-4PKARU4.AIR_POLLUTION">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-4PKARU4;Initial Catalog=AIR_POLLUTION;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -161,7 +171,7 @@
       DTS:ObjectName="DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DESKTOP-AEDDPJR;Initial Catalog=AirPolutionIndiaStagingArea;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-4PKARU4;Initial Catalog=AIR_POLLUTION;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -626,7 +636,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[AirPolutionIndia]</property>
+                  name="OpenRowset">[OLE DB Destination]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -669,8 +679,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-4PKARU4.AIR_POLLUTION]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-4PKARU4.AIR_POLLUTION]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -688,7 +698,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="stn_code"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Stn_code]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stn_code]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[stn_code]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sampling_date]"
@@ -696,7 +706,7 @@
                       cachedDataType="str"
                       cachedLength="19"
                       cachedName="sampling_date"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sampling_date]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sampling_date]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[sampling_date]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state]"
@@ -704,7 +714,7 @@
                       cachedDataType="str"
                       cachedLength="27"
                       cachedName="state"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[state]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[location]"
@@ -712,7 +722,7 @@
                       cachedDataType="str"
                       cachedLength="19"
                       cachedName="location"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[location]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[agency]"
@@ -720,7 +730,7 @@
                       cachedDataType="str"
                       cachedLength="70"
                       cachedName="agency"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[agency]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[agency]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[type]"
@@ -728,7 +738,7 @@
                       cachedDataType="str"
                       cachedLength="34"
                       cachedName="type"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[type]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[type]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[so2]"
@@ -736,7 +746,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="so2"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[so2]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[so2]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[no2]"
@@ -744,7 +754,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="no2"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[no2]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[no2]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rspm]"
@@ -752,7 +762,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="rspm"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rspm]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[rspm]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[spm]"
@@ -760,7 +770,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="spm"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[spm]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[spm]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[location_monitoring_station]"
@@ -768,7 +778,7 @@
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="location_monitoring_station"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location_monitoring_station]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location_monitoring_station]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[location_monitoring_station]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pm2_5]"
@@ -776,7 +786,7 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="pm2_5"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PM2_5]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pm2_5]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[pm2_5]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
@@ -784,89 +794,89 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="date"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Stn_code]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Stn_code" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sampling_date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Sampling_date" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="State" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Location" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Agency" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Type" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stn_code]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="SO2" />
+                      name="stn_code" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sampling_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="sampling_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="27"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[agency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="agency" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="34"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[so2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="NO2" />
+                      name="so2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[no2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="RSPM" />
+                      name="no2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rspm]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="SPM" />
+                      name="rspm" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location_monitoring_station]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[spm]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="spm" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[location_monitoring_station]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="Location_monitoring_station" />
+                      name="location_monitoring_station" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PM2_5]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pm2_5]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="PM2_5" />
+                      name="pm2_5" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="Date" />
+                      name="date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -920,7 +930,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150.33962264151,41.6603773584906"
           Id="Package\Data Flow Task"
           TopLeft="261.714290171254,60.5647067317501" />
       </GraphLayout>
@@ -932,11 +942,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150.33962264151,41.6603773584906"
           Id="Package\Data Flow Task\Flat File Source"
           TopLeft="252.571432872694,45.270588870197" />
         <NodeLayout
-          Size="170.4,41.6"
+          Size="170.264150943397,41.6603773584906"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="244.571432736455,135.200001896129" />
         <EdgeLayout

@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{C5D74533-68CE-4035-BDB7-FF68A712BA1B}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{1C0B0832-20B7-41F5-A1B6-C0AE5D2CF36D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -50,7 +50,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{E8901AAE-D383-4161-9615-DD36A1EBC3B5}"
+              DTS:DTSID="{B8F2E9AA-EB0A-434E-BF23-66F1BA34BE7C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -59,23 +59,27 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="city_ascii"
-              DTS:DTSID="{EBF38F38-5C8C-4E03-A15D-450DED437804}"
+              DTS:DTSID="{BAF04F5A-8F93-43E2-9167-FDAE12AFBD9B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="14"
+              DTS:DataType="131"
+              DTS:DataPrecision="10"
+              DTS:DataScale="7"
               DTS:TextQualified="True"
               DTS:ObjectName="lat"
-              DTS:DTSID="{E00967CF-A300-44EA-9A29-6104884462A1}"
+              DTS:DTSID="{D9A00A18-5C19-48E4-A50D-5B4BE88E46E6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="14"
+              DTS:DataType="131"
+              DTS:DataPrecision="10"
+              DTS:DataScale="7"
               DTS:TextQualified="True"
               DTS:ObjectName="lng"
-              DTS:DTSID="{2C31EB92-52E5-4C31-AECF-F4AFBBFC8366}"
+              DTS:DTSID="{4B1949B0-FF96-4AE6-B11C-E1EEF49EA743}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -84,7 +88,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="country"
-              DTS:DTSID="{6E5E7B26-72A8-40B2-B5BB-E335685DDFB2}"
+              DTS:DTSID="{80CD8D41-F1FC-4A0F-98E5-68100DD4FDAE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -93,7 +97,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="iso2"
-              DTS:DTSID="{C46E09FB-477F-430F-AA28-E659217F4C82}"
+              DTS:DTSID="{D28C6097-2916-42D1-9069-7F9ECF022CE2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -102,7 +106,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="iso3"
-              DTS:DTSID="{BEBC6C78-E5E1-450B-B8B4-3AD384B9D5D0}"
+              DTS:DTSID="{2D1173D3-2D84-4D2F-B33E-0DA0F356981A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -111,7 +115,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="admin_name"
-              DTS:DTSID="{261EFD79-951A-4C4C-905A-118467C8AFBB}"
+              DTS:DTSID="{CBAF6114-6DEB-49B7-BC5B-6F0FD02DFDEF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -120,7 +124,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="capital"
-              DTS:DTSID="{91DAC673-AC01-4FF5-9742-59ECB3E04E5D}"
+              DTS:DTSID="{18079AE7-C271-4E77-AEB2-1604F448FDA0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -128,7 +132,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="population"
-              DTS:DTSID="{C4941772-B9E8-413B-A27E-F11FDA908C2E}"
+              DTS:DTSID="{98743128-3EB7-4A00-9461-2AB99F9D6317}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -136,7 +140,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="id"
-              DTS:DTSID="{228B3D6D-ECF4-4F51-BBAA-1A13D554A3FC}"
+              DTS:DTSID="{CB653E99-D920-44BD-BFC4-FDE13F268395}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -236,12 +240,14 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lat]"
-                      dataType="decimal"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[lat]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lat]"
                       name="lat"
+                      precision="10"
+                      scale="7"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -256,12 +262,14 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lng]"
-                      dataType="decimal"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[lng]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lng]"
                       name="lng"
+                      precision="10"
+                      scale="7"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -441,12 +449,16 @@
                       name="city_ascii" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[lat]"
-                      dataType="decimal"
-                      name="lat" />
+                      dataType="numeric"
+                      name="lat"
+                      precision="10"
+                      scale="7" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[lng]"
-                      dataType="decimal"
-                      name="lng" />
+                      dataType="numeric"
+                      name="lng"
+                      precision="10"
+                      scale="7" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[country]"
                       codePage="1252"
@@ -658,14 +670,18 @@
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lat]"
-                      cachedDataType="decimal"
+                      cachedDataType="numeric"
                       cachedName="lat"
+                      cachedPrecision="10"
+                      cachedScale="7"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lat]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lng]"
-                      cachedDataType="decimal"
+                      cachedDataType="numeric"
                       cachedName="lng"
+                      cachedPrecision="10"
+                      cachedScale="7"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
                       lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lng]" />
                   </inputColumns>

@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-AEDDPJR"
   DTS:CreatorName="DESKTOP-AEDDPJR\daanv"
-  DTS:DTSID="{C03A6BCD-7A3C-4653-ABC1-7920B1D298FC}"
+  DTS:DTSID="{FCC156D6-2AE8-4386-93DD-EACB47ED37F2}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.1301.433"
   DTS:LocaleID="2067"
-  DTS:ObjectName="Package"
+  DTS:ObjectName="ImportCSVFiles"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{86DCD1AE-ECAB-4657-8C02-643CC84172AB}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{2E8DC343-AB40-4969-ABCF-3AAF030D7989}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -152,16 +152,6 @@
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{A793EB88-6023-434C-931F-3AC8BE4B3136}"
-      DTS:ObjectName="DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DESKTOP-AEDDPJR;Initial Catalog=AirPolutionIndiaStagingArea;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -669,8 +659,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
+                  connectionManagerID="{4E7CCAC1-733F-4C28-BB70-C9242C255610}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -934,14 +924,14 @@
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Data Flow Task\Flat File Source"
-          TopLeft="252.571432872694,45.270588870197" />
+          TopLeft="37.1428577753958,50.164706585894" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="244.571432736455,135.200001896129" />
+          TopLeft="29.1428576391568,140.094119611826" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Flat File Source Output]"
-          TopLeft="328.771432804575,86.8705888701971">
+          TopLeft="113.342857707277,91.7647065858941">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

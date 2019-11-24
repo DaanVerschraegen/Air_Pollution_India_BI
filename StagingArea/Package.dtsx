@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-AEDDPJR"
   DTS:CreatorName="DESKTOP-AEDDPJR\daanv"
-  DTS:DTSID="{FCC156D6-2AE8-4386-93DD-EACB47ED37F2}"
+  DTS:DTSID="{E4615B77-CE72-44BC-97FD-AD58C2C3CF73}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.1301.433"
   DTS:LocaleID="2067"
-  DTS:ObjectName="ImportCSVFiles"
+  DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{15FD9BAB-9F50-4FB6-BFEC-AEB0E4DA9AC6}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{441F73A7-3632-45DB-A323-76E0518141AE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -20,7 +20,7 @@
       DTS:refId="Package.ConnectionManagers[AirPollution]"
       DTS:CreationName="FLATFILE"
       DTS:Description="import the air pollution CSV"
-      DTS:DTSID="{FDD5FCB3-AF54-4BC3-9489-B81596995F34}"
+      DTS:DTSID="{ED699D8A-52DD-48D1-A8E4-48508461E3A0}"
       DTS:ObjectName="AirPollution">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -40,7 +40,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="stn_code"
-              DTS:DTSID="{7DC3EEEB-60BA-4DD4-8E8B-20B521FCE218}"
+              DTS:DTSID="{70B9652F-8F80-4067-B1A8-E86C13FCED48}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="sampling_date"
-              DTS:DTSID="{65FA441E-1BC6-4BBC-BABC-90A22BE81FE8}"
+              DTS:DTSID="{AB36AB84-DAA7-4648-B21C-5A6669551ED4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{8FD1C143-7077-44CD-8206-4819AB06DFBC}"
+              DTS:DTSID="{1843F755-0B8D-444E-86D7-ADC4D81FE585}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -67,7 +67,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="location"
-              DTS:DTSID="{567DA2B4-8E46-45D1-95EA-0B2D3D0923D8}"
+              DTS:DTSID="{279122BB-DFA4-4DAE-A339-191FC1174C67}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="agency"
-              DTS:DTSID="{0D462C25-267A-43F2-8E64-1D9CB7F5D520}"
+              DTS:DTSID="{04E105B0-C8D3-4424-B13F-220A7DA206CC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="type"
-              DTS:DTSID="{542D1721-8F5E-4072-B46F-E6BD8351E6DC}"
+              DTS:DTSID="{0A672E6B-586B-4BE6-97D7-992877866260}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -94,7 +94,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="so2"
-              DTS:DTSID="{52261180-8FF4-47B9-915B-60393D0B5837}"
+              DTS:DTSID="{3D6CF705-B4FC-4F1E-A418-AE2FC2EAAF9C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -103,7 +103,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="no2"
-              DTS:DTSID="{A4AA8AB6-F31F-484D-9B3D-39C6905B99EB}"
+              DTS:DTSID="{62B0F99A-5F92-42DE-AEFE-2502443BA0C6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -112,7 +112,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="rspm"
-              DTS:DTSID="{A54F8BC4-260F-4011-8B3B-86151D5FCDC5}"
+              DTS:DTSID="{CB841F0E-7AB3-498E-8696-9440B93B8BD1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -121,7 +121,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="spm"
-              DTS:DTSID="{EA85C7CE-BAA6-428A-BF2E-6B18400CC0A4}"
+              DTS:DTSID="{CEE682DB-7D98-4C81-9350-6D6E73AA2F69}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -130,7 +130,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="location_monitoring_station"
-              DTS:DTSID="{22CC3C35-DE58-45A7-A8D1-61D2D075E951}"
+              DTS:DTSID="{D8B171D1-885B-4F15-AE3E-CBDE23539736}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -139,7 +139,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="pm2_5"
-              DTS:DTSID="{18D0B4D2-3017-4AFF-98D9-ED02959E1EF5}"
+              DTS:DTSID="{71D71CE3-FC57-4450-B5A1-925D05FBC548}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -148,7 +148,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="date"
-              DTS:DTSID="{7E73AF04-95A4-416F-B103-C45752A291EE}"
+              DTS:DTSID="{D2FD1D4C-B83C-4F4A-9C53-E0C0D73E0192}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -157,7 +157,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{46042822-726F-42CF-B038-535975B4C7AD}"
+      DTS:DTSID="{61777751-D214-4613-AEF2-907F31F99186}"
       DTS:ObjectName="DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -171,7 +171,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{1AF18C85-0843-4619-AE8B-0AF3685DB93A}"
+      DTS:DTSID="{CB214DC0-5DF8-4CCA-9FA4-FBA253BBF611}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"

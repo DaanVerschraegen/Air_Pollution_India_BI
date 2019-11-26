@@ -11,20 +11,20 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{2CFFB969-16F4-4C39-8D32-BB07483928D3}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{EB65E515-6E14-453E-BCBB-7E5F49177FD4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\ETL to datawarehouse"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{22D3FA74-5888-47D1-A337-5CCC86EF5871}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="ETL to datawarehouse"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -1428,7 +1428,7 @@
       DTS:From="Package\Import worldcities CSV in staging area"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Data Flow Task" />
+      DTS:To="Package\ETL to datawarehouse" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1473,23 +1473,23 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Data Flow Task"
-          TopLeft="314.857148219128,202.494120486962" />
+          Size="184,41.6"
+          Id="Package\ETL to datawarehouse"
+          TopLeft="306.285719501729,201.270591058038" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="390.771433485771,175.623529866492">
+          TopLeft="394.885719127072,175.623529866492">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,26.8705906204699"
+              EndConnector="0,25.6470611915457"
               Start="0,0"
-              End="0,19.3705906204699">
+              End="0,18.1470611915457">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.3705906204699" />
+                    End="0,18.1470611915457" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

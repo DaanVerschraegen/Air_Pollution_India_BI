@@ -11,140 +11,10 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{3278E7BE-4225-4219-9967-E0390EE23F1B}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{25C7EDBE-7261-46A8-ACA7-06C99B419CA9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{1146819A-248D-4BCF-BF38-222F5D432414}"
-      DTS:ObjectName="DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DESKTOP-AEDDPJR;Initial Catalog=AirPolutionIndiaStagingArea;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Worldcities]"
-      DTS:CreationName="FLATFILE"
-      DTS:Description="import worldcities CSV"
-      DTS:DTSID="{E0C3C359-0CFB-447C-973B-E810D5B42077}"
-      DTS:ObjectName="Worldcities">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="2067"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x0022_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="D:\School\AP\2019-2020\Semester 1\Intro BI\Data files\worldcities.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="34"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="city"
-              DTS:DTSID="{4D9FD73D-ABEE-4F5C-AEC7-67967C8B8EF6}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="34"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="city_ascii"
-              DTS:DTSID="{38A56B05-2080-4746-A38E-0C48A318AFDF}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="lat"
-              DTS:DTSID="{27442F3F-2679-4B30-9BAB-E4E46B2FC2A8}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="lng"
-              DTS:DTSID="{2B91F342-C267-4ADD-AE38-4E166D81EE1B}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="45"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="country"
-              DTS:DTSID="{2E294D1F-4DC9-4AFA-9170-33D25502121A}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="2"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="iso2"
-              DTS:DTSID="{73EE40B2-176E-49E2-BAAA-8C3D63B1B569}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="3"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="iso3"
-              DTS:DTSID="{3FA3AEC2-14BB-4B95-B273-67821197BB56}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="55"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="admin_name"
-              DTS:DTSID="{613F0750-3EC7-4D72-9AED-5F7DB2C59137}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="7"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="capital"
-              DTS:DTSID="{149475CF-CF58-4BC2-94D6-0B63E5544ED4}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="14"
-              DTS:TextQualified="True"
-              DTS:ObjectName="population"
-              DTS:DTSID="{40F1F127-B004-444E-9267-7ECBB4082117}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="id"
-              DTS:DTSID="{9E7BD2EA-131A-4676-9D52-4D7F9C3A691F}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -183,8 +53,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Worldcities]"
-                  connectionManagerRefId="Package.ConnectionManagers[Worldcities]"
+                  connectionManagerID="{E0C3C359-0CFB-447C-973B-E810D5B42077}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Worldcities]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -585,8 +455,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-AEDDPJR.AirPolutionIndiaStagingArea]"
+                  connectionManagerID="{61777751-D214-4613-AEF2-907F31F99186}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR AirPolutionIndiaStagingArea]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

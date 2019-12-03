@@ -2,18 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>StagingArea</Name>
-    <LastWriteTime>2019-11-26T10:46:08.2860567Z</LastWriteTime>
+    <LastWriteTime>2019-11-26T11:57:46.4302593Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
-      <Name>Package1.dtsx</Name>
-      <LastWriteTime>2019-11-26T10:44:52.6594693Z</LastWriteTime>
-      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
-    </ProjectBuildItemInfo>
-    <ProjectBuildItemInfo>
       <Name>Package.dtsx</Name>
-      <LastWriteTime>2019-11-26T10:49:19.6944504Z</LastWriteTime>
+      <LastWriteTime>2019-12-03T11:56:53.0515348Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

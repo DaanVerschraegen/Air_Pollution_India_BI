@@ -11,20 +11,20 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{1C03A38A-5D64-4F28-9CFE-3366476BE71E}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{A0336484-E2C5-490B-8647-3C9B887A493E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\ImportDataCSV"
+      DTS:refId="Package\ETL to datawarehouse"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{CB214DC0-5DF8-4CCA-9FA4-FBA253BBF611}"
+      DTS:DTSID="{22D3FA74-5888-47D1-A337-5CCC86EF5871}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="ImportDataCSV"
+      DTS:ObjectName="ETL to datawarehouse"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,7 +32,634 @@
           version="1">
           <components>
             <component
-              refId="Package\ImportDataCSV\Data CSV"
+              refId="Package\ETL to datawarehouse\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input].Columns[Agency]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Agency"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]} == "NA" ? NULL(DT_I4) : (DT_I4)#{Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Agency == "NA" ? NULL(DT_I4) : (DT_I4)Agency</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to datawarehouse\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Agency]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to datawarehouse\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{C05392D6-2660-436D-9557-BC6C8878B54E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR.AirPollutionIndiaDWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Agency]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Agency"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Agency" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to datawarehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to datawarehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to datawarehouse\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SQL Server AirPolutionIndia table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AirPolutionIndia]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Connections[OleDbConnection]"
+                  connectionManagerID="{61777751-D214-4613-AEF2-907F31F99186}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR AirPolutionIndiaStagingArea]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Stn_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Stn_code]"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Stn_code]"
+                      name="Stn_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Sampling_date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Sampling_date]"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Sampling_date]"
+                      name="Sampling_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Agency]"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]"
+                      name="Agency"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SO2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SO2]"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SO2]"
+                      name="SO2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[NO2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[NO2]"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[NO2]"
+                      name="NO2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[RSPM]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[RSPM]"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[RSPM]"
+                      name="RSPM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SPM]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SPM]"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SPM]"
+                      name="SPM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location_monitoring_station]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location_monitoring_station]"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location_monitoring_station]"
+                      name="Location_monitoring_station"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[PM2_5]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[PM2_5]"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[PM2_5]"
+                      name="PM2_5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Stn_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Stn_code" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Sampling_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Sampling_date" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Agency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Agency" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SO2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SO2" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[NO2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NO2" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[RSPM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RSPM" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SPM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SPM" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location_monitoring_station]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Location_monitoring_station" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[PM2_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PM2_5" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Stn_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Stn_code]"
+                      name="Stn_code" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Sampling_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Sampling_date]"
+                      name="Sampling_date" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Agency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Agency]"
+                      name="Agency" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SO2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SO2]"
+                      name="SO2" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[NO2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[NO2]"
+                      name="NO2" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[RSPM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[RSPM]"
+                      name="RSPM" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SPM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SPM]"
+                      name="SPM" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location_monitoring_station]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location_monitoring_station]"
+                      name="Location_monitoring_station" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[PM2_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[PM2_5]"
+                      name="PM2_5" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ETL to datawarehouse.Paths[Derived Column Output]"
+              endId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\ETL to datawarehouse.Paths[OLE DB Source Output]"
+              endId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import data CSV in staging area"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CB214DC0-5DF8-4CCA-9FA4-FBA253BBF611}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import data CSV in staging area"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import data CSV in staging area\Data CSV"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -52,25 +679,25 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\ImportDataCSV\Data CSV.Connections[FlatFileConnection]"
+                  refId="Package\Import data CSV in staging area\Data CSV.Connections[FlatFileConnection]"
                   connectionManagerID="{ED699D8A-52DD-48D1-A8E4-48508461E3A0}:external"
                   connectionManagerRefId="Project.ConnectionManagers[AirPollution]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output]"
+                  refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[stn_code]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[stn_code]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[stn_code]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[stn_code]"
                       length="50"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[stn_code]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[stn_code]"
                       name="stn_code"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -85,14 +712,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[sampling_date]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[sampling_date]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[sampling_date]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[sampling_date]"
                       length="19"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[sampling_date]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[sampling_date]"
                       name="sampling_date"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -107,14 +734,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[state]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[state]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[state]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[state]"
                       length="27"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[state]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[state]"
                       name="state"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -129,14 +756,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[location]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[location]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[location]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[location]"
                       length="19"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[location]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[location]"
                       name="location"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -151,14 +778,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[agency]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[agency]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[agency]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[agency]"
                       length="70"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[agency]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[agency]"
                       name="agency"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -173,14 +800,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[type]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[type]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[type]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[type]"
                       length="34"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[type]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[type]"
                       name="type"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -195,14 +822,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[so2]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[so2]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[so2]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[so2]"
                       length="50"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[so2]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[so2]"
                       name="so2"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -217,14 +844,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[no2]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[no2]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[no2]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[no2]"
                       length="50"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[no2]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[no2]"
                       name="no2"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -239,14 +866,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[rspm]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[rspm]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[rspm]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[rspm]"
                       length="50"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[rspm]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[rspm]"
                       name="rspm"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -261,14 +888,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[spm]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[spm]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[spm]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[spm]"
                       length="50"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[spm]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[spm]"
                       name="spm"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -283,14 +910,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[location_monitoring_station]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[location_monitoring_station]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[location_monitoring_station]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[location_monitoring_station]"
                       length="100"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[location_monitoring_station]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[location_monitoring_station]"
                       name="location_monitoring_station"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -305,14 +932,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[pm2_5]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[pm2_5]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[pm2_5]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[pm2_5]"
                       length="50"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[pm2_5]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[pm2_5]"
                       name="pm2_5"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -327,14 +954,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[date]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[date]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      externalMetadataColumnId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[date]"
                       length="50"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[date]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[date]"
                       name="date"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -352,79 +979,79 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[stn_code]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[stn_code]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="stn_code" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[sampling_date]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[sampling_date]"
                       codePage="1252"
                       dataType="str"
                       length="19"
                       name="sampling_date" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[state]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[state]"
                       codePage="1252"
                       dataType="str"
                       length="27"
                       name="state" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[location]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[location]"
                       codePage="1252"
                       dataType="str"
                       length="19"
                       name="location" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[agency]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[agency]"
                       codePage="1252"
                       dataType="str"
                       length="70"
                       name="agency" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[type]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[type]"
                       codePage="1252"
                       dataType="str"
                       length="34"
                       name="type" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[so2]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[so2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="so2" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[no2]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[no2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="no2" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[rspm]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[rspm]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="rspm" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[spm]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[spm]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="spm" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[location_monitoring_station]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[location_monitoring_station]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="location_monitoring_station" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[pm2_5]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[pm2_5]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="pm2_5" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].ExternalColumns[date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -432,27 +1059,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Error Output]"
+                  refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -461,7 +1088,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table"
+              refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -518,7 +1145,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Connections[OleDbConnection]"
+                  refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Connections[OleDbConnection]"
                   connectionManagerID="{61777751-D214-4613-AEF2-907F31F99186}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR AirPolutionIndiaStagingArea]"
                   description="The OLE DB runtime connection used to access the database."
@@ -526,193 +1153,193 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input]"
+                  refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[stn_code]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[stn_code]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="stn_code"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Stn_code]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[stn_code]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Stn_code]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[stn_code]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[sampling_date]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[sampling_date]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="19"
                       cachedName="sampling_date"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Sampling_date]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[sampling_date]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Sampling_date]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[sampling_date]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[state]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[state]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="27"
                       cachedName="state"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[State]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[state]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[state]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[location]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[location]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="19"
                       cachedName="location"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[location]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[location]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[agency]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[agency]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="70"
                       cachedName="agency"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[agency]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[agency]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[type]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[type]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="34"
                       cachedName="type"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[type]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[type]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[so2]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[so2]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="so2"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[so2]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[so2]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[no2]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[no2]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="no2"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[no2]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[no2]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[rspm]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[rspm]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="rspm"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[rspm]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[rspm]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[spm]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[spm]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="spm"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[spm]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[spm]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[location_monitoring_station]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[location_monitoring_station]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="location_monitoring_station"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Location_monitoring_station]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[location_monitoring_station]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Location_monitoring_station]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[location_monitoring_station]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[pm2_5]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[pm2_5]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="pm2_5"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[PM2_5]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[pm2_5]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[PM2_5]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[pm2_5]" />
                     <inputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[date]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].Columns[date]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="date"
-                      externalMetadataColumnId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
-                      lineageId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output].Columns[date]" />
+                      externalMetadataColumnId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Stn_code]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Stn_code]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Stn_code" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Sampling_date]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Sampling_date]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Sampling_date" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Location" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Agency" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Type" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="SO2" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="NO2" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="RSPM" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="SPM" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Location_monitoring_station]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Location_monitoring_station]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Location_monitoring_station" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[PM2_5]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[PM2_5]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PM2_5" />
                     <externalMetadataColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -722,22 +1349,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -748,22 +1375,22 @@
           </components>
           <paths>
             <path
-              refId="Package\ImportDataCSV.Paths[Flat File Source Output]"
-              endId="Package\ImportDataCSV\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input]"
+              refId="Package\Import data CSV in staging area.Paths[Flat File Source Output]"
+              endId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input]"
               name="Flat File Source Output"
-              startId="Package\ImportDataCSV\Data CSV.Outputs[Flat File Source Output]" />
+              startId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\ImportWorldcitiesCSV"
+      DTS:refId="Package\Import worldcities CSV in staging area"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{d6e0e5e3-5e9d-442a-a06a-b7c0e9168721}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="ImportWorldcitiesCSV"
+      DTS:ObjectName="Import worldcities CSV in staging area"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -771,7 +1398,7 @@
           version="1">
           <components>
             <component
-              refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table"
+              refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -828,7 +1455,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Connections[OleDbConnection]"
+                  refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Connections[OleDbConnection]"
                   connectionManagerID="{61777751-D214-4613-AEF2-907F31F99186}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR AirPolutionIndiaStagingArea]"
                   description="The OLE DB runtime connection used to access the database."
@@ -836,160 +1463,160 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input]"
+                  refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[city]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="34"
                       cachedName="city"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[city]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[city]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[city_ascii]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[city_ascii]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="34"
                       cachedName="city_ascii"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[City_ascii]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[city_ascii]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[City_ascii]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[city_ascii]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[country]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[country]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="45"
                       cachedName="country"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[country]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[country]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[iso2]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[iso2]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="2"
                       cachedName="iso2"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Iso2]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso2]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Iso2]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso2]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[iso3]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[iso3]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="3"
                       cachedName="iso3"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Iso3]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso3]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Iso3]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso3]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[admin_name]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[admin_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="55"
                       cachedName="admin_name"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Admin_name]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[admin_name]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Admin_name]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[admin_name]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[capital]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[capital]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="7"
                       cachedName="capital"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Capital]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[capital]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Capital]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[capital]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[population]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[population]"
                       cachedDataType="decimal"
                       cachedName="population"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Population]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[population]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Population]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[population]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[id]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[id]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[id]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[lat]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[lat]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="lat"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[lat]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[lat]" />
                     <inputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[lng]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].Columns[lng]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="lng"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[lng]" />
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[lng]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="City" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[City_ascii]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[City_ascii]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="City_ascii" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
                       dataType="numeric"
                       name="Latitude"
                       precision="10"
                       scale="7" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
                       dataType="numeric"
                       name="Longitude"
                       precision="10"
                       scale="7" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Country" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Iso2]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Iso2]"
                       codePage="1252"
                       dataType="str"
                       length="2"
                       name="Iso2" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Iso3]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Iso3]"
                       codePage="1252"
                       dataType="str"
                       length="3"
                       name="Iso3" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Admin_name]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Admin_name]"
                       codePage="1252"
                       dataType="str"
                       length="60"
                       name="Admin_name" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Capital]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Capital]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="Capital" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Population]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Population]"
                       dataType="numeric"
                       name="Population"
                       precision="10" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
                       dataType="i8"
                       name="Id" />
                   </externalMetadataColumns>
@@ -997,22 +1624,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1021,7 +1648,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\ImportWorldcitiesCSV\Worldcities CSV"
+              refId="Package\Import worldcities CSV in staging area\Worldcities CSV"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -1041,25 +1668,25 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Connections[FlatFileConnection]"
+                  refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Connections[FlatFileConnection]"
                   connectionManagerID="{E0C3C359-0CFB-447C-973B-E810D5B42077}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Worldcities]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output]"
+                  refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[city]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[city]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[city]"
                       length="34"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[city]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[city]"
                       name="city"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1074,14 +1701,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[city_ascii]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[city_ascii]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[city_ascii]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[city_ascii]"
                       length="34"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[city_ascii]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[city_ascii]"
                       name="city_ascii"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1096,14 +1723,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[lat]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[lat]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[lat]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[lat]"
                       length="50"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[lat]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[lat]"
                       name="lat"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1118,14 +1745,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[lng]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[lng]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[lng]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[lng]"
                       length="50"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[lng]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[lng]"
                       name="lng"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1140,14 +1767,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[country]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[country]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[country]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[country]"
                       length="45"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[country]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[country]"
                       name="country"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1162,14 +1789,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso2]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso2]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[iso2]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[iso2]"
                       length="2"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso2]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso2]"
                       name="iso2"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1184,14 +1811,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso3]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso3]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[iso3]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[iso3]"
                       length="3"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso3]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[iso3]"
                       name="iso3"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1206,14 +1833,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[admin_name]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[admin_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[admin_name]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[admin_name]"
                       length="55"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[admin_name]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[admin_name]"
                       name="admin_name"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1228,14 +1855,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[capital]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[capital]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[capital]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[capital]"
                       length="7"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[capital]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[capital]"
                       name="capital"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1250,12 +1877,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[population]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[population]"
                       dataType="decimal"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[population]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[population]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[population]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[population]"
                       name="population"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1270,12 +1897,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[id]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[id]"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].Columns[id]"
+                      externalMetadataColumnId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].Columns[id]"
                       name="id"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1293,91 +1920,91 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[city]"
                       codePage="1252"
                       dataType="str"
                       length="34"
                       name="city" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[city_ascii]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[city_ascii]"
                       codePage="1252"
                       dataType="str"
                       length="34"
                       name="city_ascii" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[lat]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[lat]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="lat" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[lng]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[lng]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="lng" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[country]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[country]"
                       codePage="1252"
                       dataType="str"
                       length="45"
                       name="country" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[iso2]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[iso2]"
                       codePage="1252"
                       dataType="str"
                       length="2"
                       name="iso2" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[iso3]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[iso3]"
                       codePage="1252"
                       dataType="str"
                       length="3"
                       name="iso3" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[admin_name]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[admin_name]"
                       codePage="1252"
                       dataType="str"
                       length="55"
                       name="admin_name" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[capital]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[capital]"
                       codePage="1252"
                       dataType="str"
                       length="7"
                       name="capital" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[population]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[population]"
                       dataType="decimal"
                       name="population" />
                     <externalMetadataColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output].ExternalColumns[id]"
                       dataType="i4"
                       name="id" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Error Output]"
+                  refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="65001"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1388,10 +2015,10 @@
           </components>
           <paths>
             <path
-              refId="Package\ImportWorldcitiesCSV.Paths[Flat File Source Output]"
-              endId="Package\ImportWorldcitiesCSV\SQL Server WorldCities table.Inputs[OLE DB Destination Input]"
+              refId="Package\Import worldcities CSV in staging area.Paths[Flat File Source Output]"
+              endId="Package\Import worldcities CSV in staging area\SQL Server WorldCities table.Inputs[OLE DB Destination Input]"
               name="Flat File Source Output"
-              startId="Package\ImportWorldcitiesCSV\Worldcities CSV.Outputs[Flat File Source Output]" />
+              startId="Package\Import worldcities CSV in staging area\Worldcities CSV.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1402,10 +2029,18 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{9EA7380E-34E6-45A3-AA09-BA3819BA7E29}"
-      DTS:From="Package\ImportDataCSV"
+      DTS:From="Package\Import data CSV in staging area"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\ImportWorldcitiesCSV" />
+      DTS:To="Package\Import worldcities CSV in staging area" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{43F97A61-5951-4464-A910-67A368196DF8}"
+      DTS:From="Package\Import worldcities CSV in staging area"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\ETL to datawarehouse" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1418,29 +2053,55 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151.2,41.6"
-          Id="Package\ImportDataCSV"
-          TopLeft="284.000004836492,64.2352950185228" />
+          Size="184,41.6"
+          Id="Package\ETL to datawarehouse"
+          TopLeft="128.571430760987,154.776472758917" />
         <NodeLayout
-          Size="180.8,41.6"
-          Id="Package\ImportWorldcitiesCSV"
-          TopLeft="261.714290171254,162.16470673175" />
+          Size="229.6,41.6"
+          Id="Package\Import data CSV in staging area"
+          TopLeft="106.28571609575,17.7411767194015" />
+        <NodeLayout
+          Size="258.4,41.6"
+          Id="Package\Import worldcities CSV in staging area"
+          TopLeft="84.571430011672,87.5294115673707" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="355.857147503873,105.835295018523">
+          TopLeft="217.428573053711,59.3411767194015">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.3294117132272"
+              EndConnector="0,28.1882348479692"
               Start="0,0"
-              End="0,48.8294117132272">
+              End="0,20.6882348479692">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.8294117132272" />
+                    End="0,20.6882348479692" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="217.171430386329,129.129411567371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.647061191546"
+              Start="0,0"
+              End="0,18.147061191546">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.147061191546" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1453,20 +2114,97 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\ImportDataCSV">
+    design-time-name="Package\ETL to datawarehouse">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table"
+          TopLeft="12.5714287855187,22.6352944350985" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\ETL to datawarehouse\Derived Column"
+          TopLeft="281.142861930692,22.0235297206364" />
+        <EdgeLayout
+          Id="Package\ETL to datawarehouse.Paths[OLE DB Source Output]"
+          TopLeft="247.771428785519,43.1294120778674">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.3714331451728,0"
+              Start="0,0"
+              End="25.8714331451728,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.8714331451728,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\ETL to datawarehouse\OLE DB Destination"
+          TopLeft="478.857151012032,21.4117650061743" />
+        <EdgeLayout
+          Id="Package\ETL to datawarehouse.Paths[Derived Column Output]"
+          TopLeft="433.942861930692,42.5176473634053">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.91428908134,0"
+              Start="0,0"
+              End="37.41428908134,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="37.41428908134,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import data CSV in staging area">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="122.4,41.6"
-          Id="Package\ImportDataCSV\Data CSV"
+          Id="Package\Import data CSV in staging area\Data CSV"
           TopLeft="37.1428577753958,50.164706585894" />
         <NodeLayout
           Size="235.2,41.6"
-          Id="Package\ImportDataCSV\SQL Server AirPolutionIndia table"
+          Id="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table"
           TopLeft="29.1428576391568,140.094119611826" />
         <EdgeLayout
-          Id="Package\ImportDataCSV.Paths[Flat File Source Output]"
+          Id="Package\Import data CSV in staging area.Paths[Flat File Source Output]"
           TopLeft="98.3428577753958,91.764706585894">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1503,7 +2241,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ImportDataCSV\SQL Server AirPolutionIndia table">
+    design-time-name="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1516,20 +2254,20 @@
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\ImportWorldcitiesCSV">
+    design-time-name="Package\Import worldcities CSV in staging area">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,41.6"
-          Id="Package\ImportWorldcitiesCSV\Worldcities CSV"
+          Id="Package\Import worldcities CSV in staging area\Worldcities CSV"
           TopLeft="113.714281315706,54.0705882867727" />
         <NodeLayout
           Size="213.6,41.6"
-          Id="Package\ImportWorldcitiesCSV\SQL Server WorldCities table"
+          Id="Package\Import worldcities CSV in staging area\SQL Server WorldCities table"
           TopLeft="80.1142813157061,171.670588286773" />
         <EdgeLayout
-          Id="Package\ImportWorldcitiesCSV.Paths[Flat File Source Output]"
+          Id="Package\Import worldcities CSV in staging area.Paths[Flat File Source Output]"
           TopLeft="188.314281315706,95.6705882867727">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1547,11 +2285,26 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL to datawarehouse\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{A0336484-E2C5-490B-8647-3C9B887A493E}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{25871EED-BEB4-4282-A708-8A893E4C1A54}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,82 +31,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\ETL to datawarehouse\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input].Columns[Agency]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Agency"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]} == "NA" ? NULL(DT_I4) : (DT_I4)#{Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">Agency == "NA" ? NULL(DT_I4) : (DT_I4)Agency</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\ETL to datawarehouse\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
@@ -290,50 +214,6 @@
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Stn_code]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Stn_code]"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Stn_code]"
-                      name="Stn_code"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Sampling_date]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Sampling_date]"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Sampling_date]"
-                      name="Sampling_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[State]"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]"
-                      name="State"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location]"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]"
-                      name="Location"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]"
                       codePage="1252"
                       dataType="str"
@@ -343,94 +223,6 @@
                       length="100"
                       lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]"
                       name="Agency"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Type]"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]"
-                      name="Type"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SO2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SO2]"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SO2]"
-                      name="SO2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[NO2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[NO2]"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[NO2]"
-                      name="NO2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[RSPM]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[RSPM]"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[RSPM]"
-                      name="RSPM"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SPM]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SPM]"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SPM]"
-                      name="SPM"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location_monitoring_station]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location_monitoring_station]"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location_monitoring_station]"
-                      name="Location_monitoring_station"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[PM2_5]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[PM2_5]"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[PM2_5]"
-                      name="PM2_5"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Date]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Date]"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Date]"
-                      name="Date"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -521,97 +313,6 @@
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Stn_code]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Stn_code]"
-                      name="Stn_code" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Sampling_date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Sampling_date]"
-                      name="Sampling_date" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[State]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[State]"
-                      name="State" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location]"
-                      name="Location" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Agency]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Agency]"
-                      name="Agency" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Type]"
-                      name="Type" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SO2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SO2]"
-                      name="SO2" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[NO2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[NO2]"
-                      name="NO2" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[RSPM]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[RSPM]"
-                      name="RSPM" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SPM]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SPM]"
-                      name="SPM" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location_monitoring_station]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location_monitoring_station]"
-                      name="Location_monitoring_station" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[PM2_5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[PM2_5]"
-                      name="PM2_5" />
-                    <outputColumn
-                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Date]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Date]"
-                      name="Date" />
-                    <outputColumn
                       refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -623,6 +324,13 @@
                       lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Agency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Agency]"
+                      name="Agency" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -631,13 +339,8 @@
           </components>
           <paths>
             <path
-              refId="Package\ETL to datawarehouse.Paths[Derived Column Output]"
-              endId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\ETL to datawarehouse\Derived Column.Outputs[Derived Column Output]" />
-            <path
               refId="Package\ETL to datawarehouse.Paths[OLE DB Source Output]"
-              endId="Package\ETL to datawarehouse\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\ETL to datawarehouse\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output]" />
           </paths>
@@ -2117,55 +1820,29 @@
     design-time-name="Package\ETL to datawarehouse">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="235.2,41.6"
-          Id="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table"
-          TopLeft="12.5714287855187,22.6352944350985" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\ETL to datawarehouse\Derived Column"
-          TopLeft="281.142861930692,22.0235297206364" />
-        <EdgeLayout
-          Id="Package\ETL to datawarehouse.Paths[OLE DB Source Output]"
-          TopLeft="247.771428785519,43.1294120778674">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="33.3714331451728,0"
-              Start="0,0"
-              End="25.8714331451728,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="25.8714331451728,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\ETL to datawarehouse\OLE DB Destination"
           TopLeft="478.857151012032,21.4117650061743" />
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table"
+          TopLeft="12.5714287855187,22.6352944350985" />
         <EdgeLayout
-          Id="Package\ETL to datawarehouse.Paths[Derived Column Output]"
-          TopLeft="433.942861930692,42.5176473634053">
+          Id="Package\ETL to datawarehouse.Paths[OLE DB Source Output]"
+          TopLeft="247.771428785519,42.8235297206364">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="44.91428908134,0"
+              EndConnector="231.085722226513,0"
               Start="0,0"
-              End="37.41428908134,0">
+              End="223.585722226513,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="37.41428908134,0" />
+                    End="223.585722226513,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2177,6 +1854,19 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL to datawarehouse\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\ETL to datawarehouse\SQL Server AirPolutionIndia table">
     <Properties>
@@ -2293,18 +1983,5 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL to datawarehouse\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

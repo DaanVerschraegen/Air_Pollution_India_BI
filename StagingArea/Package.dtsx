@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{CD3018AE-EEF2-4FED-914C-DB14E5E852E7}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{0896B4E4-68F5-4115-BA2D-0C1202B298F1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3439,7 +3439,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-64.6750390625,16.6500000000001,129.350078125,16"
+              BoundingBox="-55.80638671875,18.8453125000001,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3519,7 +3519,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-7.21003906249992,5,114.120078125,16"
+              BoundingBox="1.65861328125008,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

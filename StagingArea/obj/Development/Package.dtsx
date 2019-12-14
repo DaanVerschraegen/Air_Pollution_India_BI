@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{0261FD4C-6F88-4CC0-934E-8EB1C6BFF249}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{CD3018AE-EEF2-4FED-914C-DB14E5E852E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -135,7 +135,7 @@ where [refTable].[Agency] = ?</property>
                       cachedLength="100"
                       cachedName="Agency"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\ETL to table Agency in DWH\Sort.Outputs[Sort Output].Columns[Agency]">
+                      lineageId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Agency]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -193,11 +193,11 @@ where [refTable].[Agency] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\ETL to table Agency in DWH\Sort"
+              refId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
-              name="Sort"
+              name="Remove duplicates of AirPolutionIndia table"
               version="1">
               <properties>
                 <property
@@ -212,11 +212,11 @@ where [refTable].[Agency] = ?</property>
               </properties>
               <inputs>
                 <input
-                  refId="Package\ETL to table Agency in DWH\Sort.Inputs[Sort Input]"
+                  refId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\ETL to table Agency in DWH\Sort.Inputs[Sort Input].Columns[Agency]"
+                      refId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input].Columns[Agency]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
@@ -239,17 +239,17 @@ where [refTable].[Agency] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\ETL to table Agency in DWH\Sort.Outputs[Sort Output]"
+                  refId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ETL to table Agency in DWH\Sort.Outputs[Sort Output].Columns[Agency]"
+                      refId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Agency]"
                       codePage="1252"
                       comparisonFlags="1"
                       dataType="str"
                       length="100"
-                      lineageId="Package\ETL to table Agency in DWH\Sort.Outputs[Sort Output].Columns[Agency]"
+                      lineageId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Agency]"
                       name="Agency"
                       sortKeyPosition="1">
                       <properties>
@@ -346,7 +346,7 @@ where [refTable].[Agency] = ?</property>
                       cachedName="Agency"
                       cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\ETL to table Agency in DWH\SQL Server Agency table.Inputs[OLE DB Destination Input].ExternalColumns[Agency]"
-                      lineageId="Package\ETL to table Agency in DWH\Sort.Outputs[Sort Output].Columns[Agency]" />
+                      lineageId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Agency]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -581,14 +581,14 @@ where [refTable].[Agency] = ?</property>
               startId="Package\ETL to table Agency in DWH\Check if value alrdy exists.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\ETL to table Agency in DWH.Paths[OLE DB Source Output]"
-              endId="Package\ETL to table Agency in DWH\Sort.Inputs[Sort Input]"
+              endId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\ETL to table Agency in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\ETL to table Agency in DWH.Paths[Sort Output]"
               endId="Package\ETL to table Agency in DWH\Check if value alrdy exists.Inputs[Lookup Input]"
               name="Sort Output"
-              startId="Package\ETL to table Agency in DWH\Sort.Outputs[Sort Output]" />
+              startId="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -608,11 +608,11 @@ where [refTable].[Agency] = ?</property>
           version="1">
           <components>
             <component
-              refId="Package\ETL to table Location in DWH\Lookup"
+              refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
+              name="Add lat and long from WorldCities table"
               usesDispositions="true"
               version="6">
               <properties>
@@ -664,7 +664,7 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]};#{Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]};</property>
+                  name="ParameterMap">#{Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]};#{Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -676,7 +676,7 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\ETL to table Location in DWH\Lookup.Connections[OleDbConnection]"
+                  refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Connections[OleDbConnection]"
                   connectionManagerID="{61777751-D214-4613-AEF2-907F31F99186}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR AirPolutionIndiaStagingArea]"
                   description="Connection manager used to access lookup data."
@@ -684,16 +684,18 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\ETL to table Location in DWH\Lookup.Inputs[Lookup Input]"
+                  refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\ETL to table Location in DWH\Lookup.Inputs[Lookup Input].Columns[Location]"
+                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input].Columns[Location]"
                       cachedCodepage="1252"
+                      cachedComparisonFlags="1"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Location"
-                      lineageId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]">
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -706,12 +708,14 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\ETL to table Location in DWH\Lookup.Inputs[Lookup Input].Columns[State]"
+                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input].Columns[State]"
                       cachedCodepage="1252"
+                      cachedComparisonFlags="1"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="State"
-                      lineageId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]">
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -729,17 +733,17 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\ETL to table Location in DWH\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Match Output].Columns[Latitude]"
+                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Latitude]"
                       dataType="numeric"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Match Output].Columns[Latitude]"
+                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Latitude]"
                       name="Latitude"
                       precision="10"
                       scale="7"
@@ -752,10 +756,10 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Match Output].Columns[Longitude]"
+                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Longitude]"
                       dataType="numeric"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Match Output].Columns[Longitude]"
+                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Longitude]"
                       name="Longitude"
                       precision="10"
                       scale="7"
@@ -771,32 +775,458 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\ETL to table Location in DWH\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\ETL to table Location in DWH\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to table Location in DWH\Check if value alrdy exists"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Check if value alrdy exists"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Location]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Location]) [refTable]
+where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="State" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="City" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AreaType" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_NUMERIC" length="0" precision="10" scale="7" codePage="0"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_NUMERIC" length="0" precision="10" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]};#{Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]};#{Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Type]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Connections[OleDbConnection]"
+                  connectionManagerID="{C05392D6-2660-436D-9557-BC6C8878B54E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR.AirPollutionIndiaDWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="State"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">State</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input].Columns[Location]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Location"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">City</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input].Columns[Type]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Type"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Type]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AreaType</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to table Location in DWH\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ETL to table Location in DWH\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to table Location in DWH\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ETL to table Location in DWH\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column 1.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Remove duplicates of AirPolutionIndia table"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="State"
+                      lineageId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input].Columns[Location]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Location"
+                      lineageId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input].Columns[Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Type"
+                      lineageId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]"
+                      codePage="1252"
+                      comparisonFlags="1"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]"
+                      name="State"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]"
+                      codePage="1252"
+                      comparisonFlags="1"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]"
+                      name="Location"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Type]"
+                      codePage="1252"
+                      comparisonFlags="1"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Type]"
+                      name="Type"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1097,11 +1527,13 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                     <inputColumn
                       refId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].Columns[State]"
                       cachedCodepage="1252"
+                      cachedComparisonFlags="1"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="State"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].ExternalColumns[State]"
-                      lineageId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]" />
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]" />
                     <inputColumn
                       refId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].Columns[Latitude]"
                       cachedDataType="numeric"
@@ -1109,7 +1541,7 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                       cachedPrecision="10"
                       cachedScale="7"
                       externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
-                      lineageId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Match Output].Columns[Latitude]" />
+                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Latitude]" />
                     <inputColumn
                       refId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].Columns[Longitude]"
                       cachedDataType="numeric"
@@ -1117,23 +1549,27 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                       cachedPrecision="10"
                       cachedScale="7"
                       externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
-                      lineageId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Match Output].Columns[Longitude]" />
+                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Longitude]" />
                     <inputColumn
                       refId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].Columns[Location]"
                       cachedCodepage="1252"
+                      cachedComparisonFlags="1"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Location"
+                      cachedSortKeyPosition="2"
                       externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                      lineageId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]" />
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]" />
                     <inputColumn
                       refId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].Columns[Type]"
                       cachedCodepage="1252"
+                      cachedComparisonFlags="1"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Type"
+                      cachedSortKeyPosition="3"
                       externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].ExternalColumns[AreaType]"
-                      lineageId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]" />
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Type]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1203,14 +1639,34 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
           <paths>
             <path
               refId="Package\ETL to table Location in DWH.Paths[Lookup Match Output]"
-              endId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input]"
+              endId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\ETL to table Location in DWH\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\ETL to table Location in DWH.Paths[Lookup Match Output1]"
+              endId="Package\ETL to table Location in DWH\Derived Column 1.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\ETL to table Location in DWH.Paths[Lookup No Match Output]"
+              endId="Package\ETL to table Location in DWH\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\ETL to table Location in DWH.Paths[Lookup No Match Output1]"
+              endId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\ETL to table Location in DWH.Paths[OLE DB Source Output]"
-              endId="Package\ETL to table Location in DWH\Lookup.Inputs[Lookup Input]"
+              endId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\ETL to table Location in DWH.Paths[Sort Output]"
+              endId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2794,23 +3250,23 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="97.6,41.6"
-          Id="Package\ETL to table Agency in DWH\Sort"
-          TopLeft="357.714291806124,19.5764708627879" />
+          Size="283.2,41.6"
+          Id="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table"
+          TopLeft="325.142862680007,19.5764708627879" />
         <EdgeLayout
           Id="Package\ETL to table Agency in DWH.Paths[OLE DB Source Output]"
           TopLeft="247.771428785519,41.9058826489432">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="109.942863020605,0"
+              EndConnector="77.3714338944884,0"
               Start="0,0"
-              End="102.442863020605,0">
+              End="69.8714338944884,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="102.442863020605,0" />
+                    End="69.8714338944884,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2821,13 +3277,13 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Agency in DWH.Paths[Sort Output]"
-          TopLeft="406.514291806124,61.1764708627879">
+          TopLeft="466.742862680007,61.1764708627879">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-290.514291533645,29.9764715920684"
+              EndConnector="-350.742862407529,29.9764715920684"
               Start="0,0"
-              End="-290.514291533645,22.4764715920684">
+              End="-350.742862407529,22.4764715920684">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2838,13 +3294,13 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                     Point2="0,14.9882357960342"
                     Point3="-4,14.9882357960342" />
                   <mssgle:LineSegment
-                    End="-286.514291533645,14.9882357960342" />
+                    End="-346.742862407529,14.9882357960342" />
                   <mssgle:CubicBezierSegment
-                    Point1="-286.514291533645,14.9882357960342"
-                    Point2="-290.514291533645,14.9882357960342"
-                    Point3="-290.514291533645,18.9882357960342" />
+                    Point1="-346.742862407529,14.9882357960342"
+                    Point2="-350.742862407529,14.9882357960342"
+                    Point3="-350.742862407529,18.9882357960342" />
                   <mssgle:LineSegment
-                    End="-290.514291533645,22.4764715920684" />
+                    End="-350.742862407529,22.4764715920684" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2886,7 +3342,7 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
     design-time-name="Package\ETL to table Location in DWH">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="235.2,41.6"
           Id="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table"
@@ -2894,37 +3350,29 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
         <NodeLayout
           Size="200,41.6"
           Id="Package\ETL to table Location in DWH\SQL Server Location table"
-          TopLeft="635.2,96.8" />
+          TopLeft="430.4,280.8" />
         <NodeLayout
-          Size="112.8,41.6"
-          Id="Package\ETL to table Location in DWH\Lookup"
-          TopLeft="388,98.4" />
+          Size="264,41.6"
+          Id="Package\ETL to table Location in DWH\Add lat and long from WorldCities table"
+          TopLeft="41.5999999999999,175.2" />
+        <NodeLayout
+          Size="283.2,41.6"
+          Id="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table"
+          TopLeft="448.8,86.4" />
         <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[OLE DB Source Output]"
-          TopLeft="277.6,110.4">
+          TopLeft="277.6,108.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="110.4,8.8"
+              EndConnector="171.2,0"
               Start="0,0"
-              End="102.9,8.8">
+              End="163.7,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="51.2,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="51.2,0"
-                    Point2="55.2,0"
-                    Point3="55.2,4" />
-                  <mssgle:LineSegment
-                    End="55.2,4.8" />
-                  <mssgle:CubicBezierSegment
-                    Point1="55.2,4.8"
-                    Point2="55.2,8.8"
-                    Point3="59.2,8.8" />
-                  <mssgle:LineSegment
-                    End="102.9,8.8" />
+                    End="163.7,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2934,26 +3382,144 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[Lookup Match Output]"
-          TopLeft="500.8,118.4">
+          Id="Package\ETL to table Location in DWH.Paths[Sort Output]"
+          TopLeft="590.4,128">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="134.4,0"
+              EndConnector="-416.8,47.1999999999999"
               Start="0,0"
-              End="126.9,0">
+              End="-416.8,39.6999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="126.9,0" />
+                    End="0,19.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.6"
+                    Point2="0,23.6"
+                    Point3="-4,23.6" />
+                  <mssgle:LineSegment
+                    End="-412.8,23.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-412.8,23.6"
+                    Point2="-416.8,23.6"
+                    Point3="-416.8,27.6" />
+                  <mssgle:LineSegment
+                    End="-416.8,39.6999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\ETL to table Location in DWH\Derived Column"
+          TopLeft="92.0000000000001,273.6" />
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output]"
+          TopLeft="171,216.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.8000000000001"
+              Start="0,0"
+              End="0,49.3000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.3000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="15.25861328125,5,96.3827734375,11.609375"
+              BoundingBox="-64.6750390625,16.6500000000001,129.350078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\ETL to table Location in DWH\Check if value alrdy exists"
+          TopLeft="427.2,176.8" />
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Lookup Match Output]"
+          TopLeft="305.6,196.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="121.6,0"
+              Start="0,0"
+              End="114.1,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="114.1,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.85861328124995,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output1]"
+          TopLeft="528.8,218.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.4"
+              Start="0,0"
+              End="0,54.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,21.6453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\ETL to table Location in DWH\Derived Column 1"
+          TopLeft="734.4,180" />
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Lookup Match Output1]"
+          TopLeft="627.2,199.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.2,0"
+              Start="0,0"
+              End="99.7000000000002,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.7000000000002,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7.21003906249992,5,114.120078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2987,7 +3553,7 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL to table Location in DWH\Lookup">
+    design-time-name="Package\ETL to table Location in DWH\Add lat and long from WorldCities table">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -3126,6 +3692,29 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[Agency]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL to table Location in DWH\Check if value alrdy exists">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Location]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>

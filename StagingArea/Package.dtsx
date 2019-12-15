@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="52"
-  DTS:VersionGUID="{0896B4E4-68F5-4115-BA2D-0C1202B298F1}">
+  DTS:VersionBuild="56"
+  DTS:VersionGUID="{9A4F1CB5-B38B-4BEE-9A82-F2D25A1F15A2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -727,6 +727,48 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input].Columns[Latitude]"
+                      cachedDataType="numeric"
+                      cachedName="Latitude"
+                      cachedPrecision="10"
+                      cachedScale="7"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Latitude]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Latitude</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input].Columns[Longitude]"
+                      cachedDataType="numeric"
+                      cachedName="Longitude"
+                      cachedPrecision="10"
+                      cachedScale="7"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Longitude]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Longitude</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -738,40 +780,6 @@ where [refTable].[Admin_name] = ? and [refTable].[City_ascii] = ?</property>
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Latitude]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Latitude]"
-                      name="Latitude"
-                      precision="10"
-                      scale="7"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Latitude</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Longitude]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Longitude]"
-                      name="Longitude"
-                      precision="10"
-                      scale="7"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Longitude</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -992,47 +1000,183 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
               </outputs>
             </component>
             <component
-              refId="Package\ETL to table Location in DWH\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
+              refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Check if value alrdy exists 2"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Location]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Location]) [refTable]
+where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="State" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="City" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AreaType" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_NUMERIC" length="0" precision="10" scale="7" codePage="0"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_NUMERIC" length="0" precision="10" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]};#{Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]};#{Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Type]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Connections[OleDbConnection]"
+                  connectionManagerID="{C05392D6-2660-436D-9557-BC6C8878B54E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR.AirPollutionIndiaDWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
               <inputs>
                 <input
-                  refId="Package\ETL to table Location in DWH\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Inputs[Lookup Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="State"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">State</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Inputs[Lookup Input].Columns[Location]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Location"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">City</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Inputs[Lookup Input].Columns[Type]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Type"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Type]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AreaType</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column.Inputs[Derived Column Input]">
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column.Inputs[Derived Column Input]">
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ETL to table Location in DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1041,15 +1185,15 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
               </outputs>
             </component>
             <component
-              refId="Package\ETL to table Location in DWH\Derived Column 1"
+              refId="Package\ETL to table Location in DWH\Derived Column 2"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column 1"
+              name="Derived Column 2"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\ETL to table Location in DWH\Derived Column 1.Inputs[Derived Column Input]"
+                  refId="Package\ETL to table Location in DWH\Derived Column 2.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <externalMetadataColumns />
@@ -1057,31 +1201,81 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
               </inputs>
               <outputs>
                 <output
-                  refId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Output]"
+                  refId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column 1.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Latitude]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Latitude]"
+                      name="Latitude"
+                      precision="10"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">000.0000000</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">000.0000000</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Longitude]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Longitude]"
+                      name="Longitude"
+                      precision="10"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">000.0000000</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">000.0000000</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output]"
+                  refId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column 1.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ETL to table Location in DWH\Derived Column 2.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ETL to table Location in DWH\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1541,7 +1735,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
                       cachedPrecision="10"
                       cachedScale="7"
                       externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
-                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Latitude]" />
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Latitude]" />
                     <inputColumn
                       refId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].Columns[Longitude]"
                       cachedDataType="numeric"
@@ -1549,7 +1743,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
                       cachedPrecision="10"
                       cachedScale="7"
                       externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
-                      lineageId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output].Columns[Longitude]" />
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Longitude]" />
                     <inputColumn
                       refId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input].Columns[Location]"
                       cachedCodepage="1252"
@@ -1635,28 +1829,216 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\ETL to table Location in DWH\SQL Server Location table 2"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SQL Server Location table 2"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Location]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Connections[OleDbConnection]"
+                  connectionManagerID="{C05392D6-2660-436D-9557-BC6C8878B54E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR.AirPollutionIndiaDWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="State"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].Columns[Latitude]"
+                      cachedDataType="numeric"
+                      cachedName="Latitude"
+                      cachedPrecision="10"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].Columns[Longitude]"
+                      cachedDataType="numeric"
+                      cachedName="Longitude"
+                      cachedPrecision="10"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].Columns[Location]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Location"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Location]" />
+                    <inputColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].Columns[Type]"
+                      cachedCodepage="1252"
+                      cachedComparisonFlags="1"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Type"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[AreaType]"
+                      lineageId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output].Columns[Type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[AreaType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AreaType" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="numeric"
+                      name="Latitude"
+                      precision="10"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="numeric"
+                      name="Longitude"
+                      precision="10"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Location in DWH\SQL Server Location table 2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Location in DWH\SQL Server Location table 2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Location in DWH\SQL Server Location table 2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
+            <path
+              refId="Package\ETL to table Location in DWH.Paths[Derived Column Output]"
+              endId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\ETL to table Location in DWH\Derived Column 2.Outputs[Derived Column Output]" />
             <path
               refId="Package\ETL to table Location in DWH.Paths[Lookup Match Output]"
               endId="Package\ETL to table Location in DWH\Check if value alrdy exists.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\ETL to table Location in DWH.Paths[Lookup Match Output1]"
-              endId="Package\ETL to table Location in DWH\Derived Column 1.Inputs[Derived Column Input]"
-              name="Lookup Match Output"
-              startId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup Match Output]" />
-            <path
               refId="Package\ETL to table Location in DWH.Paths[Lookup No Match Output]"
-              endId="Package\ETL to table Location in DWH\Derived Column.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\ETL to table Location in DWH.Paths[Lookup No Match Output1]"
               endId="Package\ETL to table Location in DWH\SQL Server Location table.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\ETL to table Location in DWH\Check if value alrdy exists.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\ETL to table Location in DWH.Paths[Lookup No Match Output1]"
+              endId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Inputs[Lookup Input]"
+              name="Lookup No Match Output"
+              startId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\ETL to table Location in DWH.Paths[Lookup No Match Output2]"
+              endId="Package\ETL to table Location in DWH\SQL Server Location table 2.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\ETL to table Location in DWH\Check if value alrdy exists 2.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\ETL to table Location in DWH.Paths[OLE DB Source Output]"
               endId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Inputs[Sort Input]"
@@ -1664,9 +2046,1149 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
               startId="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\ETL to table Location in DWH.Paths[Sort Output]"
-              endId="Package\ETL to table Location in DWH\Add lat and long from WorldCities table.Inputs[Lookup Input]"
+              endId="Package\ETL to table Location in DWH\Derived Column 2.Inputs[Derived Column Input]"
               name="Sort Output"
               startId="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ETL to table Measurement in DWH"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0BE78452-311E-42D9-AA9C-D596B01851C1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL to table Measurement in DWH"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Add agencyId from Agency table"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Agency]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Agency]) [refTable]
+where [refTable].[Agency] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Agency" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Connections[OleDbConnection]"
+                  connectionManagerID="{C05392D6-2660-436D-9557-BC6C8878B54E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR.AirPollutionIndiaDWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Inputs[Lookup Input].Columns[Agency]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Agency"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Agency</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Match Output].Columns[AgencyId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Match Output].Columns[AgencyId]"
+                      name="AgencyId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Add LocationId from Location table"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Location]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Location]) [refTable]
+where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="State" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="City" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="AreaType" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_NUMERIC" length="0" precision="10" scale="7" codePage="0"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_NUMERIC" length="0" precision="10" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]};#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]};#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Connections[OleDbConnection]"
+                  connectionManagerID="{C05392D6-2660-436D-9557-BC6C8878B54E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR.AirPollutionIndiaDWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Inputs[Lookup Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="State"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">State</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Inputs[Lookup Input].Columns[Location]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Location"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">City</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Inputs[Lookup Input].Columns[Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Type"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AreaType</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output].Columns[LocationId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output].Columns[LocationId]"
+                      name="LocationId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Id</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output].Columns[Latitude]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output].Columns[Latitude]"
+                      name="Latitude"
+                      precision="10"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Latitude</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output].Columns[Longitude]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output].Columns[Longitude]"
+                      name="Longitude"
+                      precision="10"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Longitude</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to table Measurement in DWH\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Date"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input].Columns[SO2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SO2"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SO2]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input].Columns[NO2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NO2"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[NO2]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input].Columns[RSPM]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RSPM"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[RSPM]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input].Columns[SPM]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SPM"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SPM]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted Date]"
+                      name="Converted Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted SO2]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted SO2]"
+                      name="Converted SO2"
+                      precision="7"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SO2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted NO2]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted NO2]"
+                      name="Converted NO2"
+                      precision="7"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[NO2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted RSPM]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted RSPM]"
+                      name="Converted RSPM"
+                      precision="7"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[RSPM]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted SPM]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted SPM]"
+                      name="Converted SPM"
+                      precision="7"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SPM]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SQL Server AirPolutionIndia table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AirPolutionIndia]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Connections[OleDbConnection]"
+                  connectionManagerID="{61777751-D214-4613-AEF2-907F31F99186}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR AirPolutionIndiaStagingArea]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="100"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      length="100"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Agency]"
+                      length="100"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Agency]"
+                      name="Agency"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      length="100"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SO2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SO2]"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SO2]"
+                      name="SO2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[NO2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[NO2]"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[NO2]"
+                      name="NO2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[RSPM]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[RSPM]"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[RSPM]"
+                      name="RSPM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SPM]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SPM]"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[SPM]"
+                      name="SPM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Stn_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Stn_code" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Sampling_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Sampling_date" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Agency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Agency" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SO2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SO2" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[NO2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NO2" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[RSPM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RSPM" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[SPM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SPM" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Location_monitoring_station]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Location_monitoring_station" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[PM2_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PM2_5" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Agency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Agency]"
+                      name="Agency" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SO2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SO2]"
+                      name="SO2" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[NO2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[NO2]"
+                      name="NO2" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[RSPM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[RSPM]"
+                      name="RSPM" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SPM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[SPM]"
+                      name="SPM" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SQL Server Measurement table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Measurement]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Connections[OleDbConnection]"
+                  connectionManagerID="{C05392D6-2660-436D-9557-BC6C8878B54E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-AEDDPJR.AirPollutionIndiaDWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].Columns[AgencyId]"
+                      cachedDataType="i8"
+                      cachedName="AgencyId"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[AgencyId]"
+                      lineageId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Match Output].Columns[AgencyId]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].Columns[LocationId]"
+                      cachedDataType="i8"
+                      cachedName="LocationId"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[LocationId]"
+                      lineageId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output].Columns[LocationId]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].Columns[Converted Date]"
+                      cachedDataType="date"
+                      cachedName="Converted Date"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted Date]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].Columns[Converted SO2]"
+                      cachedDataType="numeric"
+                      cachedName="Converted SO2"
+                      cachedPrecision="7"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted SO2]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].Columns[Converted NO2]"
+                      cachedDataType="numeric"
+                      cachedName="Converted NO2"
+                      cachedPrecision="7"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted NO2]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].Columns[Converted RSPM]"
+                      cachedDataType="numeric"
+                      cachedName="Converted RSPM"
+                      cachedPrecision="7"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted RSPM]" />
+                    <inputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].Columns[Converted SPM]"
+                      cachedDataType="numeric"
+                      cachedName="Converted SPM"
+                      cachedPrecision="7"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
+                      lineageId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Converted SPM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbDate"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[LocationId]"
+                      dataType="i8"
+                      name="LocationId" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[AgencyId]"
+                      dataType="i8"
+                      name="AgencyId" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
+                      dataType="numeric"
+                      name="SO2"
+                      precision="7"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
+                      dataType="numeric"
+                      name="NO2"
+                      precision="7"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
+                      dataType="numeric"
+                      name="RSPM"
+                      precision="7"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
+                      dataType="numeric"
+                      name="SPM"
+                      precision="7"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ETL to table Measurement in DWH.Paths[Data Conversion Output]"
+              endId="Package\ETL to table Measurement in DWH\SQL Server Measurement table.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\ETL to table Measurement in DWH\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\ETL to table Measurement in DWH.Paths[Lookup Match Output]"
+              endId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\ETL to table Measurement in DWH.Paths[Lookup Match Output1]"
+              endId="Package\ETL to table Measurement in DWH\Data Conversion.Inputs[Data Conversion Input]"
+              name="Lookup Match Output"
+              startId="Package\ETL to table Measurement in DWH\Add LocationId from Location table.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\ETL to table Measurement in DWH.Paths[OLE DB Source Output]"
+              endId="Package\ETL to table Measurement in DWH\Add agencyId from Agency table.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -3084,6 +4606,14 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\Import data CSV in staging area" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{5A8184E6-45CD-4EEB-99AE-609FC5D80845}"
+      DTS:From="Package\ETL to table Location in DWH"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\ETL to table Measurement in DWH" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -3098,24 +4628,28 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Delete data in staging area"
+          TopLeft="40.0000002043584,9.03529385167421" />
+        <NodeLayout
           Size="211.2,41.6"
           Id="Package\ETL to table Agency in DWH"
-          TopLeft="112.571430011671,205.129413755212" />
+          TopLeft="29.7142857434794,205.129413755212" />
         <NodeLayout
           Size="216.8,41.6"
           Id="Package\ETL to table Location in DWH"
-          TopLeft="108.000001362391,275.482355918357" />
+          TopLeft="25.1428570941994,275.482355918357" />
         <NodeLayout
           Size="229.6,41.6"
           Id="Package\Import data CSV in staging area"
-          TopLeft="103.428572713113,74.4941182991213" />
+          TopLeft="20.5714284449214,74.4941182991213" />
         <NodeLayout
           Size="258.4,41.6"
           Id="Package\Import worldcities CSV in staging area"
-          TopLeft="90.7428580478746,140.941176135977" />
+          TopLeft="7.88571377968299,140.941176135977" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="219.085715380494,116.094118299121">
+          TopLeft="136.228571112302,116.094118299121">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3135,35 +4669,9 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="205.6,41.6"
-          Id="Package\Delete data in staging area"
-          TopLeft="122.85714447255,9.03529385167421" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="221.942858592831,50.6352938516742">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.8588244474471"
-              Start="0,0"
-              End="0,16.3588244474471">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.3588244474471" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="219.057144029773,182.541176135977">
+          TopLeft="136.199999761581,182.541176135977">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3185,7 +4693,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="217.285715687031,246.729413755212">
+          TopLeft="134.428571418839,246.729413755212">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3205,6 +4713,54 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="139.085714324639,50.6352938516742">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.8588244474471"
+              Start="0,0"
+              End="0,16.3588244474471">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3588244474471" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="240.8,41.6"
+          Id="Package\ETL to table Measurement in DWH"
+          TopLeft="6.28571439275939,345.035298956637" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="130.114285743479,317.082355918357">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.9529430382798"
+              Start="0,0"
+              End="0,20.4529430382798">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.4529430382798" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3214,67 +4770,21 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="194.4,41.6"
-          Id="Package\ETL to table Agency in DWH\SQL Server Agency table"
-          TopLeft="379.542863497443,92.9882365982426" />
-        <NodeLayout
           Size="235.2,41.6"
           Id="Package\ETL to table Agency in DWH\SQL Server AirPolutionIndia table"
           TopLeft="12.5714287855187,22.6352944350985" />
         <NodeLayout
-          Size="200,41.6"
-          Id="Package\ETL to table Agency in DWH\Check if value alrdy exists"
-          TopLeft="16.0000002724784,91.1529424548562" />
-        <EdgeLayout
-          Id="Package\ETL to table Agency in DWH.Paths[Lookup No Match Output]"
-          TopLeft="216.000000272478,112.870589526549">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="163.542863224964,0"
-              Start="0,0"
-              End="156.042863224964,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="156.042863224964,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="22.2150448937322,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
           Size="283.2,41.6"
           Id="Package\ETL to table Agency in DWH\Remove duplicates of AirPolutionIndia table"
           TopLeft="325.142862680007,19.5764708627879" />
-        <EdgeLayout
-          Id="Package\ETL to table Agency in DWH.Paths[OLE DB Source Output]"
-          TopLeft="247.771428785519,41.9058826489432">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="77.3714338944884,0"
-              Start="0,0"
-              End="69.8714338944884,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="69.8714338944884,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\ETL to table Agency in DWH\Check if value alrdy exists"
+          TopLeft="16.0000002724784,91.1529424548562" />
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\ETL to table Agency in DWH\SQL Server Agency table"
+          TopLeft="379.542863497443,92.9882365982426" />
         <EdgeLayout
           Id="Package\ETL to table Agency in DWH.Paths[Sort Output]"
           TopLeft="466.742862680007,61.1764708627879">
@@ -3309,11 +4819,57 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL to table Agency in DWH.Paths[OLE DB Source Output]"
+          TopLeft="247.771428785519,41.9058826489432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77.3714338944884,0"
+              Start="0,0"
+              End="69.8714338944884,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="69.8714338944884,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL to table Agency in DWH.Paths[Lookup No Match Output]"
+          TopLeft="216.000000272478,112.870589526549">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="163.542863224964,0"
+              Start="0,0"
+              End="156.042863224964,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="156.042863224964,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="22.2150448937322,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL to table Agency in DWH\SQL Server Agency table">
+    design-time-name="Package\ETL to table Agency in DWH\SQL Server AirPolutionIndia table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3326,7 +4882,30 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL to table Agency in DWH\SQL Server AirPolutionIndia table">
+    design-time-name="Package\ETL to table Agency in DWH\Check if value alrdy exists">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Agency]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL to table Agency in DWH\SQL Server Agency table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3344,24 +4923,28 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="200,41.6"
+          Id="Package\ETL to table Location in DWH\Check if value alrdy exists"
+          TopLeft="410.4,247.2" />
+        <NodeLayout
           Size="235.2,41.6"
           Id="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table"
-          TopLeft="42.4000000000001,89.6" />
-        <NodeLayout
-          Size="200,41.6"
-          Id="Package\ETL to table Location in DWH\SQL Server Location table"
-          TopLeft="430.4,280.8" />
-        <NodeLayout
-          Size="264,41.6"
-          Id="Package\ETL to table Location in DWH\Add lat and long from WorldCities table"
-          TopLeft="41.5999999999999,175.2" />
+          TopLeft="44.0000000000001,89.6" />
         <NodeLayout
           Size="283.2,41.6"
           Id="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table"
-          TopLeft="448.8,86.4" />
+          TopLeft="450.4,86.4" />
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\ETL to table Location in DWH\SQL Server Location table"
+          TopLeft="413.6,351.2" />
+        <NodeLayout
+          Size="264,41.6"
+          Id="Package\ETL to table Location in DWH\Add lat and long from WorldCities table"
+          TopLeft="24.7999999999999,245.6" />
         <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[OLE DB Source Output]"
-          TopLeft="277.6,108.8">
+          TopLeft="279.2,108.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3382,98 +4965,8 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[Sort Output]"
-          TopLeft="590.4,128">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-416.8,47.1999999999999"
-              Start="0,0"
-              End="-416.8,39.6999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.6"
-                    Point2="0,23.6"
-                    Point3="-4,23.6" />
-                  <mssgle:LineSegment
-                    End="-412.8,23.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-412.8,23.6"
-                    Point2="-416.8,23.6"
-                    Point3="-416.8,27.6" />
-                  <mssgle:LineSegment
-                    End="-416.8,39.6999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\ETL to table Location in DWH\Derived Column"
-          TopLeft="92.0000000000001,273.6" />
-        <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output]"
-          TopLeft="171,216.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56.8000000000001"
-              Start="0,0"
-              End="0,49.3000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.3000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,18.8453125000001,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="200,41.6"
-          Id="Package\ETL to table Location in DWH\Check if value alrdy exists"
-          TopLeft="427.2,176.8" />
-        <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[Lookup Match Output]"
-          TopLeft="305.6,196.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="121.6,0"
-              Start="0,0"
-              End="114.1,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="114.1,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="8.85861328124995,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output1]"
-          TopLeft="528.8,218.4">
+          TopLeft="512,288.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3495,37 +4988,172 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\ETL to table Location in DWH\Derived Column 1"
-          TopLeft="734.4,180" />
         <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[Lookup Match Output1]"
-          TopLeft="627.2,199.2">
+          Id="Package\ETL to table Location in DWH.Paths[Lookup Match Output]"
+          TopLeft="288.8,267.2">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="107.2,0"
+              EndConnector="121.6,0"
               Start="0,0"
-              End="99.7000000000002,0">
+              End="114.1,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="99.7000000000002,0" />
+                    End="114.1,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="1.65861328125008,5,96.3827734375,11.609375"
+              BoundingBox="8.85861328125007,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\ETL to table Location in DWH\Derived Column 2"
+          TopLeft="72.8,172" />
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Sort Output]"
+          TopLeft="592,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-438,44"
+              Start="0,0"
+              End="-438,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="-4,22" />
+                  <mssgle:LineSegment
+                    End="-434,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-434,22"
+                    Point2="-438,22"
+                    Point3="-438,26" />
+                  <mssgle:LineSegment
+                    End="-438,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Derived Column Output]"
+          TopLeft="155.4,213.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208.8,41.6"
+          Id="Package\ETL to table Location in DWH\SQL Server Location table 2"
+          TopLeft="49.6,409.6" />
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\ETL to table Location in DWH\Check if value alrdy exists 2"
+          TopLeft="46.4,328.8" />
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output1]"
+          TopLeft="154,287.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6"
+              Start="0,0"
+              End="0,34.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,11.2453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output2]"
+          TopLeft="152.6,370.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.2"
+              Start="0,0"
+              End="0,31.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,10.0453125,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL to table Location in DWH\Check if value alrdy exists">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Location]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table">
     <Properties>
@@ -3644,7 +5272,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
     design-time-name="Package\Import worldcities CSV in staging area">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,41.6"
           Id="Package\Import worldcities CSV in staging area\Worldcities CSV"
@@ -3672,16 +5300,159 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\ETL to table Measurement in DWH">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table"
+          TopLeft="15.4285716913185,22.0235297206364" />
+        <NodeLayout
+          Size="232,41.6"
+          Id="Package\ETL to table Measurement in DWH\Add agencyId from Agency table"
+          TopLeft="353.714291738004,24.4705885784849" />
+        <EdgeLayout
+          Id="Package\ETL to table Measurement in DWH.Paths[OLE DB Source Output]"
+          TopLeft="250.628571691318,44.0470591495607">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.085720046686,0"
+              Start="0,0"
+              End="95.5857200466857,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="95.5857200466857,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="244,41.6"
+          Id="Package\ETL to table Measurement in DWH\Add LocationId from Location table"
+          TopLeft="12.5714287855187,108.282354459796" />
+        <EdgeLayout
+          Id="Package\ETL to table Measurement in DWH.Paths[Lookup Match Output]"
+          TopLeft="469.714291738004,66.0705885784849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-335.142862952485,42.2117658813108"
+              Start="0,0"
+              End="-335.142862952485,34.7117658813108">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.1058829406554" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.1058829406554"
+                    Point2="0,21.1058829406554"
+                    Point3="-4,21.1058829406554" />
+                  <mssgle:LineSegment
+                    End="-331.142862952485,21.1058829406554" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-331.142862952485,21.1058829406554"
+                    Point2="-335.142862952485,21.1058829406554"
+                    Point3="-335.142862952485,25.1058829406554" />
+                  <mssgle:LineSegment
+                    End="-335.142862952485,34.7117658813108" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-215.762818194993,26.1058829406554,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\ETL to table Measurement in DWH\Data Conversion"
+          TopLeft="390.28572093224,102.776472029636" />
+        <EdgeLayout
+          Id="Package\ETL to table Measurement in DWH.Paths[Lookup Match Output1]"
+          TopLeft="256.571428785519,126.329413244716">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133.714292146722,0"
+              Start="0,0"
+              End="126.214292146722,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="126.214292146722,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="14.9157593546109,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="224,41.6"
+          Id="Package\ETL to table Measurement in DWH\SQL Server Measurement table"
+          TopLeft="351.428577413364,186.588237910947" />
+        <EdgeLayout
+          Id="Package\ETL to table Measurement in DWH.Paths[Data Conversion Output]"
+          TopLeft="465.657149172802,144.376472029636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.2117658813107"
+              Start="0,0"
+              End="0,34.7117658813107">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.7117658813107" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL to table Agency in DWH\Check if value alrdy exists">
+    design-time-name="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL to table Measurement in DWH\Add agencyId from Agency table">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -3704,7 +5475,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL to table Location in DWH\Check if value alrdy exists">
+    design-time-name="Package\ETL to table Measurement in DWH\Add LocationId from Location table">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>

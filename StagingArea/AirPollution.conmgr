@@ -13,7 +13,7 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x0022_"
       DTS:CodePage="1252"
-      DTS:ConnectionString="D:\School\AP\2019-2020\Semester 1\Intro BI\Data files\data.csv">
+      DTS:ConnectionString="C:\Users\Dries\Documents\Intro BI\data.csv">
       <DTS:FlatFileColumns>
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -22,7 +22,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="stn_code"
-          DTS:DTSID="{70B9652F-8F80-4067-B1A8-E86C13FCED48}"
+          DTS:DTSID="{33F1C452-F2ED-43B4-89A6-F4DBE9570743}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -31,7 +31,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="sampling_date"
-          DTS:DTSID="{AB36AB84-DAA7-4648-B21C-5A6669551ED4}"
+          DTS:DTSID="{4DC695A3-18B0-4EAA-AE5B-4316D6C94D41}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -40,7 +40,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="state"
-          DTS:DTSID="{1843F755-0B8D-444E-86D7-ADC4D81FE585}"
+          DTS:DTSID="{2CC8444F-F4FE-485C-80FB-1B2AF47E7E79}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="location"
-          DTS:DTSID="{279122BB-DFA4-4DAE-A339-191FC1174C67}"
+          DTS:DTSID="{750FCF15-9492-4F43-BD2C-48E93768D17B}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="agency"
-          DTS:DTSID="{04E105B0-C8D3-4424-B13F-220A7DA206CC}"
+          DTS:DTSID="{15EC4A51-B3C9-4D3E-B590-41D47E4C0577}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -67,7 +67,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="type"
-          DTS:DTSID="{0A672E6B-586B-4BE6-97D7-992877866260}"
+          DTS:DTSID="{62F05B70-D59B-4CC1-B01E-71E178128ECD}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="so2"
-          DTS:DTSID="{3D6CF705-B4FC-4F1E-A418-AE2FC2EAAF9C}"
+          DTS:DTSID="{AFFA8F5C-8FC9-4714-A957-8F123B613C9D}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="no2"
-          DTS:DTSID="{62B0F99A-5F92-42DE-AEFE-2502443BA0C6}"
+          DTS:DTSID="{DBF10F59-9196-4A40-879A-CE842CA18DF2}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -94,7 +94,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="rspm"
-          DTS:DTSID="{CB841F0E-7AB3-498E-8696-9440B93B8BD1}"
+          DTS:DTSID="{7051F067-4651-4AF1-895B-1B82DEC537DD}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -103,7 +103,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="spm"
-          DTS:DTSID="{CEE682DB-7D98-4C81-9350-6D6E73AA2F69}"
+          DTS:DTSID="{7CE0F257-8299-4F3E-BD95-3105E6A311FE}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -112,7 +112,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="location_monitoring_station"
-          DTS:DTSID="{D8B171D1-885B-4F15-AE3E-CBDE23539736}"
+          DTS:DTSID="{0ECA9898-A772-45FE-B730-759AC67678D0}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -121,7 +121,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="pm2_5"
-          DTS:DTSID="{71D71CE3-FC57-4450-B5A1-925D05FBC548}"
+          DTS:DTSID="{CBA05C88-6B7F-4182-81B2-90642C8FAF1D}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -130,7 +130,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="date"
-          DTS:DTSID="{D2FD1D4C-B83C-4F4A-9C53-E0C0D73E0192}"
+          DTS:DTSID="{41B4AFE5-7784-4111-967B-B5545481C91B}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

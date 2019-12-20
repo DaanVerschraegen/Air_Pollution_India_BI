@@ -13,25 +13,25 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x0022_"
       DTS:CodePage="1252"
-      DTS:ConnectionString="D:\School\AP\2019-2020\Semester 1\Intro BI\Data files\worldcities.csv">
+      DTS:ConnectionString="C:\Users\Dries\Documents\Intro BI\worldcities.csv">
       <DTS:FlatFileColumns>
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="34"
+          DTS:MaximumWidth="100"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="city"
-          DTS:DTSID="{4D9FD73D-ABEE-4F5C-AEC7-67967C8B8EF6}"
+          DTS:DTSID="{8CA0230A-068D-420A-B930-06323D1B4571}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="34"
+          DTS:MaximumWidth="100"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="city_ascii"
-          DTS:DTSID="{38A56B05-2080-4746-A38E-0C48A318AFDF}"
+          DTS:DTSID="{3AE0675C-A36B-4684-A1ED-8D61598A2206}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -40,7 +40,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="lat"
-          DTS:DTSID="{27442F3F-2679-4B30-9BAB-E4E46B2FC2A8}"
+          DTS:DTSID="{7AB6192B-702B-4E94-9940-7E1E840FA6F7}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="lng"
-          DTS:DTSID="{2B91F342-C267-4ADD-AE38-4E166D81EE1B}"
+          DTS:DTSID="{792CF410-819A-47D0-9386-19FC56A1127A}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="country"
-          DTS:DTSID="{2E294D1F-4DC9-4AFA-9170-33D25502121A}"
+          DTS:DTSID="{D62F699C-60BD-4FE6-8F00-8690B34F5375}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -67,7 +67,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="iso2"
-          DTS:DTSID="{73EE40B2-176E-49E2-BAAA-8C3D63B1B569}"
+          DTS:DTSID="{144C4FA9-8724-4646-9C01-4B8EFDF407A1}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="iso3"
-          DTS:DTSID="{3FA3AEC2-14BB-4B95-B273-67821197BB56}"
+          DTS:DTSID="{7C0DC943-5FA4-4A2C-ACDD-C8606AD0D8C1}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="admin_name"
-          DTS:DTSID="{613F0750-3EC7-4D72-9AED-5F7DB2C59137}"
+          DTS:DTSID="{93DC01C1-0CD0-48AA-8AAB-3754BB67603D}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -94,7 +94,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="capital"
-          DTS:DTSID="{149475CF-CF58-4BC2-94D6-0B63E5544ED4}"
+          DTS:DTSID="{872763F0-BF69-4315-A1C9-CD82F6738987}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -102,7 +102,7 @@
           DTS:DataType="14"
           DTS:TextQualified="True"
           DTS:ObjectName="population"
-          DTS:DTSID="{40F1F127-B004-444E-9267-7ECBB4082117}"
+          DTS:DTSID="{319BB5A9-54E9-4CA4-B9FD-0CE24DFF2E6E}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -110,7 +110,7 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="id"
-          DTS:DTSID="{9E7BD2EA-131A-4676-9D52-4D7F9C3A691F}"
+          DTS:DTSID="{75EEE34F-C185-4591-A9D7-E6F1C47E3A13}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

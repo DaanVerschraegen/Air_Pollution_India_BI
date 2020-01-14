@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="95"
-  DTS:VersionGUID="{0B3F20AB-0BE9-48CB-8941-7955848DE677}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{3FAD52FF-E9A7-42EE-99C6-45879B5310AE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2452,7 +2452,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\354:invalid};#{Package\ETL to table Measurement in DWH\355:invalid};#{Package\ETL to table Measurement in DWH\356:invalid};</property>
+                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\338:invalid};#{Package\ETL to table Measurement in DWH\339:invalid};#{Package\ETL to table Measurement in DWH\340:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3530,20 +3530,20 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
               </outputs>
             </component>
             <component
-              refId="Package\ETL to table Measurement in DWH\Replace"
+              refId="Package\ETL to table Measurement in DWH\Replace dot to comma"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Replace"
+              name="Replace dot to comma"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\ETL to table Measurement in DWH\Replace.Inputs[Derived Column Input]"
+                  refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\ETL to table Measurement in DWH\Replace.Inputs[Derived Column Input].Columns[SO2]"
+                      refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Inputs[Derived Column Input].Columns[SO2]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
@@ -3568,7 +3568,7 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\ETL to table Measurement in DWH\Replace.Inputs[Derived Column Input].Columns[NO2]"
+                      refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Inputs[Derived Column Input].Columns[NO2]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
@@ -3593,7 +3593,7 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\ETL to table Measurement in DWH\Replace.Inputs[Derived Column Input].Columns[RSPM]"
+                      refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Inputs[Derived Column Input].Columns[RSPM]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
@@ -3618,7 +3618,7 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\ETL to table Measurement in DWH\Replace.Inputs[Derived Column Input].Columns[SPM]"
+                      refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Inputs[Derived Column Input].Columns[SPM]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
@@ -3648,31 +3648,31 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
               </inputs>
               <outputs>
                 <output
-                  refId="Package\ETL to table Measurement in DWH\Replace.Outputs[Derived Column Output]"
+                  refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\ETL to table Measurement in DWH\Replace.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Replace dot to comma.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\ETL to table Measurement in DWH\Replace.Outputs[Derived Column Error Output]"
+                  refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\ETL to table Measurement in DWH\Replace.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ETL to table Measurement in DWH\Replace dot to comma.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ETL to table Measurement in DWH\Replace.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ETL to table Measurement in DWH\Replace.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ETL to table Measurement in DWH\Replace dot to comma.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ETL to table Measurement in DWH\Replace.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\ETL to table Measurement in DWH\Replace dot to comma.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ETL to table Measurement in DWH\Replace.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ETL to table Measurement in DWH\Replace dot to comma.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4213,14 +4213,14 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
               startId="Package\ETL to table Measurement in DWH\Add values to SO2, NO2, RSPM, SPM, Date.Outputs[Derived Column Output]" />
             <path
               refId="Package\ETL to table Measurement in DWH.Paths[Derived Column Output1]"
-              endId="Package\ETL to table Measurement in DWH\Replace.Inputs[Derived Column Input]"
+              endId="Package\ETL to table Measurement in DWH\Replace dot to comma.Inputs[Derived Column Input]"
               name="Derived Column Output"
               startId="Package\ETL to table Measurement in DWH\Add columns SO2, NO2, RSPM, SPM, Date.Outputs[Derived Column Output]" />
             <path
               refId="Package\ETL to table Measurement in DWH.Paths[Derived Column Output2]"
               endId="Package\ETL to table Measurement in DWH\Add values to SO2, NO2, RSPM, SPM, Date.Inputs[Derived Column Input]"
               name="Derived Column Output"
-              startId="Package\ETL to table Measurement in DWH\Replace.Outputs[Derived Column Output]" />
+              startId="Package\ETL to table Measurement in DWH\Replace dot to comma.Outputs[Derived Column Output]" />
             <path
               refId="Package\ETL to table Measurement in DWH.Paths[Lookup Match Output]"
               endId="Package\ETL to table Measurement in DWH\Add columns SO2, NO2, RSPM, SPM, Date.Inputs[Derived Column Input]"
@@ -6256,11 +6256,11 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
         <NodeLayout
           Size="224,41.6"
           Id="Package\ETL to table Measurement in DWH\SQL Server Measurement table"
-          TopLeft="113.142864110518,234.729415505485" />
+          TopLeft="130.285721545316,299.57647523847" />
         <NodeLayout
           Size="244,41.6"
           Id="Package\ETL to table Measurement in DWH\Add LocationId from Location table"
-          TopLeft="99.4285659011531,86.9647073151748" />
+          TopLeft="499.428572713113,93.6941191742581" />
         <NodeLayout
           Size="280,41.6"
           Id="Package\ETL to table Measurement in DWH\Add values to SO2, NO2, RSPM, SPM, Date"
@@ -6268,11 +6268,11 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
         <NodeLayout
           Size="276.8,41.6"
           Id="Package\ETL to table Measurement in DWH\Add columns SO2, NO2, RSPM, SPM, Date"
-          TopLeft="81.8285786395178,161.505883888719" />
+          TopLeft="86.9714358699573,96.6588241557344" />
         <NodeLayout
           Size="283.2,41.6"
           Id="Package\ETL to table Measurement in DWH\Remove duplicates of AirPolutionIndia table"
-          TopLeft="449.02857148696,306.588238640227" />
+          TopLeft="104.457137047515,228.894119903538" />
         <NodeLayout
           Size="235.2,41.6"
           Id="Package\ETL to table Measurement in DWH\SQL Server AirPolutionIndia table"
@@ -6280,85 +6280,73 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
         <NodeLayout
           Size="232,41.6"
           Id="Package\ETL to table Measurement in DWH\Add agencyId from Agency table"
-          TopLeft="518.171442886275,89.6941180074092" />
+          TopLeft="497.600013964517,24.2352935599622" />
         <NodeLayout
           Size="200,41.6"
           Id="Package\ETL to table Measurement in DWH\Check if value alrdy exists"
           TopLeft="523.428572781232,232.705882430159" />
         <EdgeLayout
           Id="Package\ETL to table Measurement in DWH.Paths[Lookup Match Output]"
-          TopLeft="220.828572270335,128.564707315175">
+          TopLeft="499.428572713113,115.976471664996">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.9411765735445"
+              EndConnector="-135.657136843155,0"
               Start="0,0"
-              End="0,25.4411765735445">
+              End="-128.157136843155,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.4411765735445" />
+                    End="-128.157136843155,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.91590078677226,96.3827734375,11.609375"
+              BoundingBox="-112.269955140328,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Measurement in DWH.Paths[Lookup Match Output1]"
-          TopLeft="518.171442886275,109.129412661292">
+          TopLeft="617.514293338815,65.8352935599622">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-174.742876985122,0"
+              EndConnector="0,27.8588256142959"
               Start="0,0"
-              End="-167.242876985122,0">
+              End="0,20.3588256142959">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-167.242876985122,0" />
+                    End="0,20.3588256142959" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-131.812825211311,5,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,4.37472530714797,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Measurement in DWH.Paths[OLE DB Source Output]"
-          TopLeft="216.000001362392,63.6235297206364">
+          TopLeft="333.600001362392,41.1294116402993">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="418.171441523883,26.0705882867728"
+              EndConnector="164.000012602125,0"
               Start="0,0"
-              End="418.171441523883,18.5705882867728">
+              End="156.500012602125,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.03529414338642" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.03529414338642"
-                    Point2="0,13.0352941433864"
-                    Point3="4,13.0352941433864" />
-                  <mssgle:LineSegment
-                    End="414.171441523883,13.0352941433864" />
-                  <mssgle:CubicBezierSegment
-                    Point1="414.171441523883,13.0352941433864"
-                    Point2="418.171441523883,13.0352941433864"
-                    Point3="418.171441523883,17.0352941433864" />
-                  <mssgle:LineSegment
-                    End="418.171441523883,18.5705882867728" />
+                    End="156.500012602125,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6369,66 +6357,42 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Measurement in DWH.Paths[Lookup No Match Output]"
-          TopLeft="623.428572781232,274.305882430159">
+          TopLeft="523.428572781232,251.600001166848">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-32.8000012942721,32.2823562100681"
+              EndConnector="-135.771435733717,0"
               Start="0,0"
-              End="-32.8000012942721,24.7823562100681">
+              End="-128.271435733717,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.1411781050341" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.1411781050341"
-                    Point2="0,16.1411781050341"
-                    Point3="-4,16.1411781050341" />
-                  <mssgle:LineSegment
-                    End="-28.8000012942721,16.1411781050341" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-28.8000012942721,16.1411781050341"
-                    Point2="-32.8000012942721,16.1411781050341"
-                    Point3="-32.8000012942721,20.1411781050341" />
-                  <mssgle:LineSegment
-                    End="-32.8000012942721,24.7823562100681" />
+                    End="-128.271435733717,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-72.206387365886,21.1411781050341,111.6127734375,11.609375"
+              BoundingBox="-119.942104585609,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Measurement in DWH.Paths[Sort Output]"
-          TopLeft="544.761904820293,306.588238640227">
+          TopLeft="244.171429296415,270.494119903538">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-319.619040709775,-30.2588231347427"
+              EndConnector="0,29.0823553349318"
               Start="0,0"
-              End="-319.619040709775,-22.7588231347427">
+              End="0,21.5823553349318">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-8.20552528693555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-8.20552528693555"
-                    Point2="0,-12.2055252869355"
-                    Point3="-4,-12.2055252869355" />
-                  <mssgle:LineSegment
-                    End="-315.619040709775,-12.2055252869355" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-315.619040709775,-12.2055252869355"
-                    Point2="-319.619040709775,-12.2055252869355"
-                    Point3="-319.619040709775,-16.2055252869355" />
-                  <mssgle:LineSegment
-                    End="-319.619040709775,-22.7588231347427" />
+                    End="0,21.5823553349318" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6460,35 +6424,23 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="115.2,41.6"
-          Id="Package\ETL to table Measurement in DWH\Replace"
-          TopLeft="382.514290579971,207.623532054334" />
+          Size="184,41.6"
+          Id="Package\ETL to table Measurement in DWH\Replace dot to comma"
+          TopLeft="131.657143450757,161.741178469674" />
         <EdgeLayout
           Id="Package\ETL to table Measurement in DWH.Paths[Derived Column Output1]"
-          TopLeft="358.628578639518,182.305883888719">
+          TopLeft="224.514289660357,138.258824155734">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="23.8857119404533,46.1176481656143"
+              EndConnector="0,23.48235431394"
               Start="0,0"
-              End="16.3857119404533,46.1176481656143">
+              End="0,15.98235431394">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="7.94285597022667,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.94285597022667,0"
-                    Point2="11.9428559702267,0"
-                    Point3="11.9428559702267,4" />
-                  <mssgle:LineSegment
-                    End="11.9428559702267,42.1176481656143" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11.9428559702267,42.1176481656143"
-                    Point2="11.9428559702267,46.1176481656143"
-                    Point3="15.9428559702267,46.1176481656143" />
-                  <mssgle:LineSegment
-                    End="16.3857119404533,46.1176481656143" />
+                    End="0,15.98235431394" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6499,24 +6451,18 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Measurement in DWH.Paths[Derived Column Output2]"
-          TopLeft="440.114290579971,207.623532054334">
+          TopLeft="315.657143450757,179.835296185371">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="42.3999962534232,-30.4941181532656"
+              EndConnector="166.857143382638,0"
               Start="0,0"
-              End="34.8999962534232,-30.4941181532656">
+              End="159.357143382638,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-26.4941181532656" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-26.4941181532656"
-                    Point2="0,-30.4941181532656"
-                    Point3="4,-30.4941181532656" />
-                  <mssgle:LineSegment
-                    End="34.8999962534232,-30.4941181532656" />
+                    End="159.357143382638,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

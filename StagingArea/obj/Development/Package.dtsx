@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="100"
-  DTS:VersionGUID="{05673606-27CD-42FB-9811-346673669726}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{331484F6-AE82-4B41-8CF0-8454560D0BCD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2452,7 +2452,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\341:invalid};#{Package\ETL to table Measurement in DWH\342:invalid};#{Package\ETL to table Measurement in DWH\343:invalid};</property>
+                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\332:invalid};#{Package\ETL to table Measurement in DWH\333:invalid};#{Package\ETL to table Measurement in DWH\334:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -7363,15 +7363,6 @@ where [refTable].[Id] = ?</property>
                       name="LocationId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[AgencyId]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].ExternalColumns[AgencyId]"
-                      lineageId="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[AgencyId]"
-                      name="AgencyId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[SO2]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
@@ -7480,11 +7471,6 @@ where [refTable].[Id] = ?</property>
                       dataType="i8"
                       lineageId="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[LocationId]"
                       name="LocationId" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[AgencyId]"
-                      dataType="i8"
-                      lineageId="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[AgencyId]"
-                      name="AgencyId" />
                     <outputColumn
                       refId="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[SO2]"
                       dataType="numeric"
@@ -8483,6 +8469,22 @@ where [refTable].[Id] = ?</property>
           Id="Package\Import data CSV in staging area"
           TopLeft="20.5714284449214,74.4941182991213" />
         <NodeLayout
+          Size="321.6,41.6"
+          Id="Package\Import DWH Agency, Location in Management Mart"
+          TopLeft="304.000005177089,343.811769527713" />
+        <NodeLayout
+          Size="259.2,41.6"
+          Id="Package\Import DWH Location in Scientist Mart"
+          TopLeft="330.285719910446,206.823531908477" />
+        <NodeLayout
+          Size="305.6,41.6"
+          Id="Package\Import DWH Measurement in Management Mart"
+          TopLeft="310.285719569849,276.564709357159" />
+        <NodeLayout
+          Size="284,41.6"
+          Id="Package\Import DWH Measurement in Scientist Mart"
+          TopLeft="324.000005517687,141.976472175493" />
+        <NodeLayout
           Size="258.4,41.6"
           Id="Package\Import worldcities CSV in staging area"
           TopLeft="7.88571377968299,140.941176135977" />
@@ -8596,10 +8598,6 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="321.6,41.6"
-          Id="Package\Import DWH Agency, Location in Management Mart"
-          TopLeft="304.000005177089,343.811769527713" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="256.800000272479,364.329415870126">
@@ -8622,10 +8620,6 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="305.6,41.6"
-          Id="Package\Import DWH Measurement in Management Mart"
-          TopLeft="310.285719569849,276.564709357159" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="463.942862373469,343.811769527713">
@@ -8648,14 +8642,6 @@ where [refTable].[Id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="259.2,41.6"
-          Id="Package\Import DWH Location in Scientist Mart"
-          TopLeft="330.285719910446,206.823531908477" />
-        <NodeLayout
-          Size="284,41.6"
-          Id="Package\Import DWH Measurement in Scientist Mart"
-          TopLeft="324.000005517687,141.976472175493" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="461.485719740147,276.564709357159">
@@ -8755,7 +8741,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8777,7 +8765,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8912,7 +8902,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8934,7 +8926,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9052,7 +9046,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9190,7 +9186,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9212,7 +9210,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9306,7 +9306,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9328,7 +9330,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9350,7 +9354,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9442,7 +9448,7 @@ where [refTable].[Id] = ?</property>
     design-time-name="Package\Import data CSV in staging area">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="122.4,41.6"
           Id="Package\Import data CSV in staging area\Data CSV"
@@ -9470,7 +9476,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9478,57 +9486,6 @@ where [refTable].[Id] = ?</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Import worldcities CSV in staging area">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\Import worldcities CSV in staging area\Worldcities CSV"
-          TopLeft="113.714281315706,54.0705882867727" />
-        <NodeLayout
-          Size="213.6,41.6"
-          Id="Package\Import worldcities CSV in staging area\SQL Server WorldCities table"
-          TopLeft="80.1142813157061,171.670588286773" />
-        <EdgeLayout
-          Id="Package\Import worldcities CSV in staging area.Paths[Flat File Source Output]"
-          TopLeft="188.314281315706,95.6705882867727">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,76.0000000000003"
-              Start="0,0"
-              End="0,68.5000000000003">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,68.5000000000003" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import worldcities CSV in staging area\SQL Server WorldCities table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9550,35 +9507,49 @@ where [refTable].[Id] = ?</property>
           Id="Package\Import DWH Agency, Location in Management Mart\SQL Server DWH Agency table"
           TopLeft="24,51.2" />
         <NodeLayout
+          Size="220.8,41.6"
+          Id="Package\Import DWH Agency, Location in Management Mart\Check if value already exists 2"
+          TopLeft="327.2,164" />
+        <NodeLayout
+          Size="288.8,41.6"
+          Id="Package\Import DWH Agency, Location in Management Mart\SQL Server Management Mart Location table"
+          TopLeft="675.2,162.4" />
+        <NodeLayout
           Size="211.2,41.6"
           Id="Package\Import DWH Agency, Location in Management Mart\Check if value already exists"
           TopLeft="329.6,51.2" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Import DWH Agency, Location in Management Mart\SQL Server DWH Location table"
+          TopLeft="19.2,164.8" />
+        <NodeLayout
+          Size="283.2,41.6"
+          Id="Package\Import DWH Agency, Location in Management Mart\SQL Server Management Mart Agency table"
+          TopLeft="674.4,57.6" />
         <EdgeLayout
-          Id="Package\Import DWH Agency, Location in Management Mart.Paths[OLE DB Source Output]"
-          TopLeft="245.6,72">
+          Id="Package\Import DWH Agency, Location in Management Mart.Paths[Lookup No Match Output1]"
+          TopLeft="548,184">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="83.9999999999999,0"
+              EndConnector="127.2,0"
               Start="0,0"
-              End="76.4999999999999,0">
+              End="119.7,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="76.4999999999999,0" />
+                    End="119.7,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="4.04361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="283.2,41.6"
-          Id="Package\Import DWH Agency, Location in Management Mart\SQL Server Management Mart Agency table"
-          TopLeft="674.4,57.6" />
         <EdgeLayout
           Id="Package\Import DWH Agency, Location in Management Mart.Paths[Lookup No Match Output]"
           TopLeft="540.8,75.2">
@@ -9599,22 +9570,10 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="7.24361328125007,5,111.6127734375,11.609375"
+              BoundingBox="7.24361328125,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="227.2,41.6"
-          Id="Package\Import DWH Agency, Location in Management Mart\SQL Server DWH Location table"
-          TopLeft="19.2,164.8" />
-        <NodeLayout
-          Size="220.8,41.6"
-          Id="Package\Import DWH Agency, Location in Management Mart\Check if value already exists 2"
-          TopLeft="327.2,164" />
-        <NodeLayout
-          Size="288.8,41.6"
-          Id="Package\Import DWH Agency, Location in Management Mart\SQL Server Management Mart Location table"
-          TopLeft="675.2,162.4" />
         <EdgeLayout
           Id="Package\Import DWH Agency, Location in Management Mart.Paths[OLE DB Source Output1]"
           TopLeft="246.4,185.2">
@@ -9638,27 +9597,25 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import DWH Agency, Location in Management Mart.Paths[Lookup No Match Output1]"
-          TopLeft="548,184">
+          Id="Package\Import DWH Agency, Location in Management Mart.Paths[OLE DB Source Output]"
+          TopLeft="245.6,72">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="127.2,0"
+              EndConnector="83.9999999999999,0"
               Start="0,0"
-              End="119.7,0">
+              End="76.4999999999999,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="119.7,0" />
+                    End="76.4999999999999,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="4.04361328124985,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9678,61 +9635,12 @@ where [refTable].[Id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Agency, Location in Management Mart\Check if value already exists">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Agency]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Agency, Location in Management Mart\SQL Server Management Mart Agency table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Agency, Location in Management Mart\SQL Server DWH Location table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Import DWH Agency, Location in Management Mart\Check if value already exists 2">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -9742,7 +9650,7 @@ where [refTable].[Id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9762,118 +9670,52 @@ where [refTable].[Id] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Import DWH Measurement in Management Mart">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="251.2,41.6"
-          Id="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table"
-          TopLeft="17.6,37.6" />
-        <NodeLayout
-          Size="312.8,41.6"
-          Id="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table"
-          TopLeft="660,44" />
-        <NodeLayout
-          Size="211.2,41.6"
-          Id="Package\Import DWH Measurement in Management Mart\Check if value already exists"
-          TopLeft="310.4,40" />
-        <EdgeLayout
-          Id="Package\Import DWH Measurement in Management Mart.Paths[OLE DB Source Output]"
-          TopLeft="268.8,59.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="41.6,0"
-              Start="0,0"
-              End="34.1,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="34.1,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import DWH Measurement in Management Mart.Paths[Lookup No Match Output]"
-          TopLeft="521.6,62.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="138.4,0"
-              Start="0,0"
-              End="130.9,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="130.9,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="9.64361328125005,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Measurement in Management Mart\Check if value already exists">
+    design-time-name="Package\Import DWH Agency, Location in Management Mart\Check if value already exists">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Measurement]</Value>
+          type="q3:string">[dbo].[Agency]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Agency, Location in Management Mart\SQL Server DWH Location table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Agency, Location in Management Mart\SQL Server Management Mart Agency table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -9883,13 +9725,13 @@ where [refTable].[Id] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="227.2,41.6"
-          Id="Package\Import DWH Location in Scientist Mart\SQL Server DWH Location table"
-          TopLeft="24,53.6" />
-        <NodeLayout
           Size="267.2,41.6"
           Id="Package\Import DWH Location in Scientist Mart\SQL Server Scientist Mart Location table"
           TopLeft="667.2,65.6" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Import DWH Location in Scientist Mart\SQL Server DWH Location table"
+          TopLeft="24,53.6" />
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\Import DWH Location in Scientist Mart\Check if value already exists"
@@ -9936,26 +9778,190 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="6.84361328125004,5,111.6127734375,11.609375"
+              BoundingBox="6.84361328125,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Location in Scientist Mart\SQL Server Scientist Mart Location table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Location in Scientist Mart\SQL Server DWH Location table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Location in Scientist Mart\Check if value already exists">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Location]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import DWH Measurement in Management Mart">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="251.2,41.6"
+          Id="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table"
+          TopLeft="17.6,37.6" />
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Import DWH Measurement in Management Mart\Check if value already exists"
+          TopLeft="310.4,40" />
+        <NodeLayout
+          Size="312.8,41.6"
+          Id="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table"
+          TopLeft="660,44" />
+        <EdgeLayout
+          Id="Package\Import DWH Measurement in Management Mart.Paths[Lookup No Match Output]"
+          TopLeft="521.6,62.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.4,0"
+              Start="0,0"
+              End="130.9,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="130.9,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="9.64361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import DWH Measurement in Management Mart.Paths[OLE DB Source Output]"
+          TopLeft="268.8,59.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.6,0"
+              Start="0,0"
+              End="34.1,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.1,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Measurement in Management Mart\Check if value already exists">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Measurement]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Import DWH Measurement in Scientist Mart">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="211.2,41.6"
-          Id="Package\Import DWH Measurement in Scientist Mart\Check if value already exists"
-          TopLeft="304.8,51.2" />
-        <NodeLayout
           Size="251.2,41.6"
           Id="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table"
           TopLeft="19.2,52" />
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Import DWH Measurement in Scientist Mart\Check if value already exists"
+          TopLeft="304.8,51.2" />
         <NodeLayout
           Size="291.2,41.6"
           Id="Package\Import DWH Measurement in Scientist Mart\SQL Server Scientist Mart Measurement table"
@@ -9984,7 +9990,7 @@ where [refTable].[Id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Import DWH Measurement in Scientist Mart.Paths[Lookup No Match Output]"
-          TopLeft="516,72">
+          TopLeft="516,72.0000000000001">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10010,78 +10016,6 @@ where [refTable].[Id] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Location in Scientist Mart\SQL Server DWH Location table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Location in Scientist Mart\SQL Server Scientist Mart Location table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Location in Scientist Mart\Check if value already exists">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Location]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Measurement in Scientist Mart\Check if value already exists">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Measurement]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table">
     <Properties>
       <Property>
@@ -10095,7 +10029,83 @@ where [refTable].[Id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Measurement in Scientist Mart\Check if value already exists">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Measurement]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Import DWH Measurement in Scientist Mart\SQL Server Scientist Mart Measurement table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import worldcities CSV in staging area">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Import worldcities CSV in staging area\Worldcities CSV"
+          TopLeft="113.714281315706,54.0705882867727" />
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\Import worldcities CSV in staging area\SQL Server WorldCities table"
+          TopLeft="80.1142813157061,171.670588286773" />
+        <EdgeLayout
+          Id="Package\Import worldcities CSV in staging area.Paths[Flat File Source Output]"
+          TopLeft="188.314281315706,95.6705882867727">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.0000000000003"
+              Start="0,0"
+              End="0,68.5000000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5000000000003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import worldcities CSV in staging area\SQL Server WorldCities table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

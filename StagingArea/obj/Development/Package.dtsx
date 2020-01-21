@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{331484F6-AE82-4B41-8CF0-8454560D0BCD}">
+  DTS:VersionBuild="109"
+  DTS:VersionGUID="{6570A350-DF1C-471F-B807-5BC3303F4149}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2452,7 +2452,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\332:invalid};#{Package\ETL to table Measurement in DWH\333:invalid};#{Package\ETL to table Measurement in DWH\334:invalid};</property>
+                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\335:invalid};#{Package\ETL to table Measurement in DWH\336:invalid};#{Package\ETL to table Measurement in DWH\337:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4694,6 +4694,82 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
               </outputs>
             </component>
             <component
+              refId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Modify AreaTypes to be more consistent"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Inputs[Derived Column Input].Columns[type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="34"
+                      cachedName="type"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[type]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[FINDSTRING](#{Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[type]},"Industrial",1) == 0 ? ([FINDSTRING](#{Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output].Columns[type]},"Residential",1) == 0 ? "Other" : "Residential") : "Industrial"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FINDSTRING(type,"Industrial",1) == 0 ? (FINDSTRING(type,"Residential",1) == 0 ? "Other" : "Residential") : "Industrial"</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -4981,8 +5057,13 @@ where [refTable].[AgencyId] = ? and [refTable].[LocationId] = ? and [refTable].[
           </components>
           <paths>
             <path
-              refId="Package\Import data CSV in staging area.Paths[Flat File Source Output]"
+              refId="Package\Import data CSV in staging area.Paths[Derived Column Output]"
               endId="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import data CSV in staging area.Paths[Flat File Source Output]"
+              endId="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent.Inputs[Derived Column Input]"
               name="Flat File Source Output"
               startId="Package\Import data CSV in staging area\Data CSV.Outputs[Flat File Source Output]" />
           </paths>
@@ -8741,9 +8822,7 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8765,9 +8844,7 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8790,7 +8867,7 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="16.6150448937323,5,111.6127734375,11.609375"
+              BoundingBox="16.6150448937325,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8854,27 +8931,27 @@ where [refTable].[Id] = ?</property>
         <NodeLayout
           Size="208.8,41.6"
           Id="Package\ETL to table Location in DWH\SQL Server Location table 2"
-          TopLeft="44.8,392.8" />
+          TopLeft="47.0857143246398,393.599999854144" />
         <NodeLayout
           Size="264,41.6"
           Id="Package\ETL to table Location in DWH\Add lat and long from WorldCities table"
-          TopLeft="19.9999999999999,228.8" />
+          TopLeft="22.2857143246397,229.599999854144" />
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\ETL to table Location in DWH\Check if value already exists"
-          TopLeft="405.6,230.4" />
+          TopLeft="407.88571432464,231.199999854144" />
         <NodeLayout
           Size="283.2,41.6"
           Id="Package\ETL to table Location in DWH\Remove duplicates of AirPolutionIndia table"
-          TopLeft="23.1999999999998,81.6" />
+          TopLeft="15.7714284449205,85.1294120049394" />
         <NodeLayout
           Size="200,41.6"
           Id="Package\ETL to table Location in DWH\SQL Server Location table"
-          TopLeft="408.8,334.4" />
+          TopLeft="411.08571432464,335.199999854144" />
         <NodeLayout
           Size="220.8,41.6"
           Id="Package\ETL to table Location in DWH\Check if value already exists 2"
-          TopLeft="41.6,308" />
+          TopLeft="43.8857143246398,308.799999854144" />
         <NodeLayout
           Size="235.2,41.6"
           Id="Package\ETL to table Location in DWH\SQL Server AirPolutionIndia table"
@@ -8882,58 +8959,10 @@ where [refTable].[Id] = ?</property>
         <NodeLayout
           Size="240,41.6"
           Id="Package\ETL to table Location in DWH\Add column latitude and longitude"
-          TopLeft="36.8,153.6" />
-        <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[Sort Output]"
-          TopLeft="160.8,123.2">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30.4"
-              Start="0,0"
-              End="0,22.9">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.9" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[OLE DB Source Output]"
-          TopLeft="162,57.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,24"
-              Start="0,0"
-              End="0,16.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="39.0857143246398,154.399999854144" />
         <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output2]"
-          TopLeft="150.6,349.6">
+          TopLeft="152.88571432464,350.399999854144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8957,7 +8986,7 @@ where [refTable].[Id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output1]"
-          TopLeft="152,270.4">
+          TopLeft="154.28571432464,271.199999854144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -8975,13 +9004,13 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,9.24531249999998,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,9.24531250000001,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output]"
-          TopLeft="510,272">
+          TopLeft="512.28571432464,272.799999854144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9005,7 +9034,7 @@ where [refTable].[Id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[Lookup Match Output]"
-          TopLeft="284,250.4">
+          TopLeft="286.28571432464,251.199999854144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9023,13 +9052,13 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="8.85861328125007,5,96.3827734375,11.609375"
+              BoundingBox="8.85861328125001,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[Derived Column Output]"
-          TopLeft="154.4,195.2">
+          TopLeft="156.68571432464,195.999999854144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9046,14 +9075,69 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Sort Output]"
+          TopLeft="158.22857138478,126.729412004939">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.6705878492046"
+              Start="0,0"
+              End="0,20.1705878492046">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1705878492046" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[OLE DB Source Output]"
+          TopLeft="158.28571422246,57.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.5294120049394"
+              Start="0,0"
+              End="0,20.0294120049394">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0294120049394" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL to table Location in DWH\SQL Server Location table 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\ETL to table Location in DWH\Add lat and long from WorldCities table">
     <Properties>
@@ -9186,14 +9270,12 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ETL to table Measurement in DWH.Paths[OLE DB Source Output]"
-          TopLeft="333.600001362392,41.1294116402993">
+          TopLeft="333.600001362392,43.9294116402993">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -9210,9 +9292,7 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9306,9 +9386,7 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9330,9 +9408,7 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9354,9 +9430,7 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9448,37 +9522,61 @@ where [refTable].[Id] = ?</property>
     design-time-name="Package\Import data CSV in staging area">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="122.4,41.6"
           Id="Package\Import data CSV in staging area\Data CSV"
-          TopLeft="83.5428577753958,51.764706585894" />
+          TopLeft="104.342857775396,51.764706585894" />
         <NodeLayout
           Size="235.2,41.6"
           Id="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table"
-          TopLeft="29.1428576391568,140.094119611826" />
+          TopLeft="43.5428576391568,194.494119611826" />
+        <NodeLayout
+          Size="268,41.6"
+          Id="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent"
+          TopLeft="28,124" />
         <EdgeLayout
           Id="Package\Import data CSV in staging area.Paths[Flat File Source Output]"
-          TopLeft="145.742857707276,93.364706585894">
+          TopLeft="163.771428887698,93.364706585894">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46.729413025932"
+              EndConnector="0,30.6352934141061"
               Start="0,0"
-              End="0,39.229413025932">
+              End="0,23.1352934141061">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.229413025932" />
+                    End="0,23.1352934141061" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import data CSV in staging area.Paths[Derived Column Output]"
+          TopLeft="161.571428819578,165.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.8941196118259"
+              Start="0,0"
+              End="0,21.3941196118259">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.3941196118259" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9593,7 +9691,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9615,7 +9715,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9755,7 +9857,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9894,7 +9998,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9955,6 +10061,10 @@ where [refTable].[Id] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="291.2,41.6"
+          Id="Package\Import DWH Measurement in Scientist Mart\SQL Server Scientist Mart Measurement table"
+          TopLeft="654.4,51.2000000000001" />
+        <NodeLayout
           Size="251.2,41.6"
           Id="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table"
           TopLeft="19.2,52" />
@@ -9962,10 +10072,6 @@ where [refTable].[Id] = ?</property>
           Size="211.2,41.6"
           Id="Package\Import DWH Measurement in Scientist Mart\Check if value already exists"
           TopLeft="304.8,51.2" />
-        <NodeLayout
-          Size="291.2,41.6"
-          Id="Package\Import DWH Measurement in Scientist Mart\SQL Server Scientist Mart Measurement table"
-          TopLeft="654.4,51.2000000000001" />
         <EdgeLayout
           Id="Package\Import DWH Measurement in Scientist Mart.Paths[OLE DB Source Output]"
           TopLeft="270.4,72.4">
@@ -9985,7 +10091,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10015,6 +10123,19 @@ where [refTable].[Id] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import DWH Measurement in Scientist Mart\SQL Server Scientist Mart Measurement table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Import DWH Measurement in Scientist Mart\SQL Server DWH Measurement table">
     <Properties>
@@ -10048,19 +10169,6 @@ where [refTable].[Id] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import DWH Measurement in Scientist Mart\SQL Server Scientist Mart Measurement table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="109"
-  DTS:VersionGUID="{6570A350-DF1C-471F-B807-5BC3303F4149}">
+  DTS:VersionBuild="111"
+  DTS:VersionGUID="{99B677E9-1E7D-45C8-BAE0-D5E2D919A53D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2452,7 +2452,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\335:invalid};#{Package\ETL to table Measurement in DWH\336:invalid};#{Package\ETL to table Measurement in DWH\337:invalid};</property>
+                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\329:invalid};#{Package\ETL to table Measurement in DWH\330:invalid};#{Package\ETL to table Measurement in DWH\331:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -6640,7 +6640,7 @@ where [refTable].[Id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LocationId" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AgencyId" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SO2" dataType="DT_NUMERIC" length="0" precision="24" scale="20" codePage="0"/&gt;&lt;referenceColumn name="NO2" dataType="DT_NUMERIC" length="0" precision="24" scale="20" codePage="0"/&gt;&lt;referenceColumn name="RSPM" dataType="DT_NUMERIC" length="0" precision="24" scale="20" codePage="0"/&gt;&lt;referenceColumn name="SPM" dataType="DT_NUMERIC" length="0" precision="24" scale="20" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LocationId" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AgencyId" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -6826,50 +6826,6 @@ where [refTable].[Id] = ?</property>
                       lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[AgencyId]"
                       name="AgencyId"
                       truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[SO2]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].ExternalColumns[SO2]"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[SO2]"
-                      name="SO2"
-                      precision="24"
-                      scale="20"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[NO2]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].ExternalColumns[NO2]"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[NO2]"
-                      name="NO2"
-                      precision="24"
-                      scale="20"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[RSPM]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].ExternalColumns[RSPM]"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[RSPM]"
-                      name="RSPM"
-                      precision="24"
-                      scale="20"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[SPM]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].ExternalColumns[SPM]"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[SPM]"
-                      name="SPM"
-                      precision="24"
-                      scale="20"
-                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6940,34 +6896,6 @@ where [refTable].[Id] = ?</property>
                       dataType="i8"
                       lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[AgencyId]"
                       name="AgencyId" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[SO2]"
-                      dataType="numeric"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[SO2]"
-                      name="SO2"
-                      precision="24"
-                      scale="20" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[NO2]"
-                      dataType="numeric"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[NO2]"
-                      name="NO2"
-                      precision="24"
-                      scale="20" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[RSPM]"
-                      dataType="numeric"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[RSPM]"
-                      name="RSPM"
-                      precision="24"
-                      scale="20" />
-                    <outputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[SPM]"
-                      dataType="numeric"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[SPM]"
-                      name="SPM"
-                      precision="24"
-                      scale="20" />
                     <outputColumn
                       refId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -7081,38 +7009,6 @@ where [refTable].[Id] = ?</property>
                       cachedName="AgencyId"
                       externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[AgencyId]"
                       lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[AgencyId]" />
-                    <inputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].Columns[SO2]"
-                      cachedDataType="numeric"
-                      cachedName="SO2"
-                      cachedPrecision="24"
-                      cachedScale="20"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[SO2]" />
-                    <inputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].Columns[NO2]"
-                      cachedDataType="numeric"
-                      cachedName="NO2"
-                      cachedPrecision="24"
-                      cachedScale="20"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[NO2]" />
-                    <inputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].Columns[RSPM]"
-                      cachedDataType="numeric"
-                      cachedName="RSPM"
-                      cachedPrecision="24"
-                      cachedScale="20"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[RSPM]" />
-                    <inputColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].Columns[SPM]"
-                      cachedDataType="numeric"
-                      cachedName="SPM"
-                      cachedPrecision="24"
-                      cachedScale="20"
-                      externalMetadataColumnId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
-                      lineageId="Package\Import DWH Measurement in Management Mart\SQL Server DWH Measurement table.Outputs[OLE DB Source Output].Columns[SPM]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7132,30 +7028,6 @@ where [refTable].[Id] = ?</property>
                       refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[AgencyId]"
                       dataType="i8"
                       name="AgencyId" />
-                    <externalMetadataColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[SO2]"
-                      dataType="numeric"
-                      name="SO2"
-                      precision="24"
-                      scale="20" />
-                    <externalMetadataColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[NO2]"
-                      dataType="numeric"
-                      name="NO2"
-                      precision="24"
-                      scale="20" />
-                    <externalMetadataColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[RSPM]"
-                      dataType="numeric"
-                      name="RSPM"
-                      precision="24"
-                      scale="20" />
-                    <externalMetadataColumn
-                      refId="Package\Import DWH Measurement in Management Mart\SQL Server Management Mart Measurement table.Inputs[OLE DB Destination Input].ExternalColumns[SPM]"
-                      dataType="numeric"
-                      name="SPM"
-                      precision="24"
-                      scale="20" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -8961,6 +8833,50 @@ where [refTable].[Id] = ?</property>
           Id="Package\ETL to table Location in DWH\Add column latitude and longitude"
           TopLeft="39.0857143246398,154.399999854144" />
         <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[Sort Output]"
+          TopLeft="158.22857138478,126.729412004939">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.6705878492046"
+              Start="0,0"
+              End="0,20.1705878492046">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1705878492046" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL to table Location in DWH.Paths[OLE DB Source Output]"
+          TopLeft="158.28571422246,57.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.5294120049394"
+              Start="0,0"
+              End="0,20.0294120049394">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0294120049394" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\ETL to table Location in DWH.Paths[Lookup No Match Output2]"
           TopLeft="152.88571432464,350.399999854144">
           <EdgeLayout.Curve>
@@ -8980,7 +8896,7 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,12.0453125,111.6127734375,11.609375"
+              BoundingBox="-64.6750390625,9.84999999999999,129.350078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -9052,7 +8968,7 @@ where [refTable].[Id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="8.85861328125001,5,96.3827734375,11.609375"
+              BoundingBox="8.85861328124999,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -9070,50 +8986,6 @@ where [refTable].[Id] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,26.1" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[Sort Output]"
-          TopLeft="158.22857138478,126.729412004939">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27.6705878492046"
-              Start="0,0"
-              End="0,20.1705878492046">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.1705878492046" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\ETL to table Location in DWH.Paths[OLE DB Source Output]"
-          TopLeft="158.28571422246,57.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27.5294120049394"
-              Start="0,0"
-              End="0,20.0294120049394">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.0294120049394" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9270,7 +9142,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9292,7 +9166,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9386,7 +9262,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9408,7 +9286,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9430,7 +9310,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9522,15 +9404,15 @@ where [refTable].[Id] = ?</property>
     design-time-name="Package\Import data CSV in staging area">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="122.4,41.6"
-          Id="Package\Import data CSV in staging area\Data CSV"
-          TopLeft="104.342857775396,51.764706585894" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="235.2,41.6"
           Id="Package\Import data CSV in staging area\SQL Server AirPolutionIndia table"
           TopLeft="43.5428576391568,194.494119611826" />
+        <NodeLayout
+          Size="122.4,41.6"
+          Id="Package\Import data CSV in staging area\Data CSV"
+          TopLeft="104.342857775396,51.764706585894" />
         <NodeLayout
           Size="268,41.6"
           Id="Package\Import data CSV in staging area\Modify AreaTypes to be more consistent"
@@ -9554,7 +9436,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9576,7 +9460,9 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9998,9 +9884,7 @@ where [refTable].[Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10025,7 +9909,7 @@ where [refTable].[Id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -10035,7 +9919,7 @@ where [refTable].[Id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

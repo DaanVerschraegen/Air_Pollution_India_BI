@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="106"
-  DTS:VersionGUID="{C0B653FE-5DCC-4258-B7F9-4DF1251E2A8A}">
+  DTS:VersionBuild="107"
+  DTS:VersionGUID="{305D7AC7-218A-4067-8181-2EDC59B77D3B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2264,13 +2264,13 @@ where [refTable].[Agency] = ?</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">0000.00000000000000000000</property>
+                          name="Expression">NULL(DT_NUMERIC,24,20)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">0000.00000000000000000000</property>
+                          name="FriendlyExpression">NULL(DT_NUMERIC,24,20)</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2452,7 +2452,7 @@ where [refTable].[State] = ? and [refTable].[City] = ? and [refTable].[AreaType]
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\329:invalid};#{Package\ETL to table Measurement in DWH\330:invalid};#{Package\ETL to table Measurement in DWH\331:invalid};</property>
+                  name="ParameterMap">#{Package\ETL to table Measurement in DWH\332:invalid};#{Package\ETL to table Measurement in DWH\333:invalid};#{Package\ETL to table Measurement in DWH\334:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."

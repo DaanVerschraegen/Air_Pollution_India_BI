@@ -11,8 +11,8 @@
   DTS:LocaleID="2067"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="106"
-  DTS:VersionGUID="{C0B653FE-5DCC-4258-B7F9-4DF1251E2A8A}">
+  DTS:VersionBuild="107"
+  DTS:VersionGUID="{305D7AC7-218A-4067-8181-2EDC59B77D3B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2264,13 +2264,13 @@ where [refTable].[Agency] = ?</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">0000.00000000000000000000</property>
+                          name="Expression">NULL(DT_NUMERIC,24,20)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">0000.00000000000000000000</property>
+                          name="FriendlyExpression">NULL(DT_NUMERIC,24,20)</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
